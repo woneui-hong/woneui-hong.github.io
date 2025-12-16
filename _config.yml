@@ -1,0 +1,17 @@
+title: "Won Eui Hong"
+description: "Business Automation & Investment Analyst based in Edmonton"
+author:
+  name: "Won Eui Hong"
+  bio: "Helping SMBs optimize operations with Data & AI."
+  location: "Edmonton, AB"
+
+# 테마 설정 (Minimal Mistakes)
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "air" # 깔끔한 흰색 테마
+
+# 플러그인
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+# 네비게이션 등 추가 설정은 추후 확장
