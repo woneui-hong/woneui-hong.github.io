@@ -5,6 +5,9 @@ url: "https://woneui-hong.github.io" # 실제 주소
 repository: "woneui-hong/woneui-hong.github.io"
 locale: "en-CA" # 캐나다 영어 설정
 
+# Source Directory (commented out - Jekyll not actively used)
+# source: content
+
 # Author Info
 author:
   name: "Won Eui Hong"
