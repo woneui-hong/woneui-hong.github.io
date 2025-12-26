@@ -28,16 +28,29 @@ export default function Hero() {
             <span className="font-semibold text-primary">WP (Work Prioritization)</span> comes before DX or AX.
           </motion.p>
 
-          <motion.a
-            href="#contact"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-600 transition-colors shadow-lg hover:shadow-xl"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            Get Free Process Assessment
-            <ArrowRight size={20} />
-          </motion.a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-600 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Get Free Process Assessment
+              <ArrowRight size={20} />
+            </a>
+            <a
+              href="https://micro-saas-8sx8.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-slate-700 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Try Demo Services
+              <ArrowRight size={20} />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
