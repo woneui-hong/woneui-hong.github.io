@@ -35,13 +35,6 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-amber-600 transition-colors shadow-lg hover:shadow-xl"
-            >
-              Get Free Process Assessment
-              <ArrowRight size={20} />
-            </a>
-            <a
               href="https://micro-saas-8sx8.onrender.com/"
               target="_blank"
               rel="noopener noreferrer"

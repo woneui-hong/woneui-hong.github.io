@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import '../../styles/globals.css'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'InsightFlow - Work Prioritization Before Automation',
-  description: 'WP (Work Prioritization) comes before DX or AX. Automating inefficient processes only accelerates inefficiency.',
+  title: 'Won Eui Hong의 블로그',
+  description: 'Won Eui Hong의 블로그입니다.',
 }
 
 export default function RootLayout({

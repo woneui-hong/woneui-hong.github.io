@@ -12,3 +12,7 @@ npx serve out
 
 # 실행 중인 서버 종료 (포트 3000)
 # lsof -ti:3000 | xargs kill
+
+# Git 자동 배포 (add + commit + push)
+npm run deploy
+

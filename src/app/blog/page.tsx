@@ -5,8 +5,8 @@ import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
 
 export const metadata = {
-  title: 'Blog - InsightFlow',
-  description: 'Expert insights on Business Automation, Work Prioritization, and Data Analysis',
+  title: 'Blog - Won Eui Hong',
+  description: 'Won Eui Hong의 블로그',
 }
 
 export default async function BlogPage() {
@@ -20,11 +20,9 @@ export default async function BlogPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Blog
+              Won Eui Hong
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Expert insights on Business Automation, Work Prioritization, and Data Analysis
-            </p>
+
           </div>
 
           {/* Posts Grid */}

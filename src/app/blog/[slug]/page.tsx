@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: `${post.metadata.title} - InsightFlow Blog`,
+    title: `${post.metadata.title} - Won Eui Hong`,
     description: post.metadata.excerpt,
   }
 }

@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Deploy to GitHub",
+      "type": "npm",
+      "script": "deploy",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true,
+        "clear": true
+      },
+      "runOptions": {
+        "runOn": "default"
+      }
+    }
+  ]
+}
+

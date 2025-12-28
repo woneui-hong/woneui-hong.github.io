@@ -9,10 +9,6 @@ export default function Header() {
 
   const navItems = [
     { label: 'Blog', href: '/blog' },
-    { label: 'Philosophy', href: '#philosophy' },
-    { label: 'Services', href: '#services' },
-    { label: 'Referral', href: '#referral' },
-    { label: 'Contact', href: '#contact' },
   ]
 
   return (
@@ -27,7 +23,7 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
           >
-            InsightFlow
+            Won Eui Hong
           </motion.a>
 
           {/* Desktop Navigation */}
