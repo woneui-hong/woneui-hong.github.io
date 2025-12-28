@@ -32,10 +32,18 @@ function generateCommitMessage() {
     };
     
     lines.forEach(line => {
-      const filePath = line.substring(3).trim(); // 상태 코드 제거
-      const statusCode = line.substring(0, 2).trim();
-      const isNew = statusCode === '??' || statusCode.startsWith('A');
-      const isModified = statusCode.startsWith('M') || statusCode.startsWith('R');
+      // git status --porcelain 형식: "XY filename"
+      // X: 스테이징 영역 상태, Y: 작업 디렉토리 상태
+      // ' ' = 변경 없음, 'M' = 수정됨, 'A' = 추가됨, 'D' = 삭제됨, 'R' = 이름 변경됨, '?' = 추적 안됨
+      const statusCode = line.substring(0, 2);
+      const filePath = line.substring(3).trim();
+      
+      // 새 파일: ?? (추적 안됨) 또는 A (추가됨)
+      const isNew = statusCode === '??' || statusCode.includes('A');
+      
+      // 수정된 파일: M (수정됨) - 스테이징 전( M), 스테이징 후(M ), 둘 다(MM)
+      // 또는 R (이름 변경/이동) - R (스테이징됨), R (작업 디렉토리만)
+      const isModified = statusCode.includes('M') || statusCode.includes('R');
       
       // 새 포스트 추가
       if (filePath.includes('content/posts/') && isNew) {
@@ -159,10 +167,12 @@ function generateCommitMessage() {
 }
 
 try {
+  // git add 전에 커밋 메시지 생성 (정확한 변경사항 파악을 위해)
+  const commitMessage = generateCommitMessage();
+  
   console.log('🔄 Git add 실행 중...');
   execSync('git add .', { stdio: 'inherit' });
   
-  const commitMessage = generateCommitMessage();
   console.log(`\n💬 커밋 메시지: ${commitMessage}`);
   console.log('📝 Git commit 실행 중...');
   execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
