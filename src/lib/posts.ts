@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
+import remarkGfm from 'remark-gfm'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -114,7 +115,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     }
   )
 
-  const processedHtml = await remark().use(html).process(processedContent)
+  const processedHtml = await remark()
+    .use(remarkGfm)
+    .use(html)
+    .process(processedContent)
   const contentHtml = processedHtml.toString()
 
   return {

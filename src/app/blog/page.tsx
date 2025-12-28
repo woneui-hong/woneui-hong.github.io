@@ -6,7 +6,7 @@ import { Calendar, Tag, User } from 'lucide-react'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
-  description: 'Won Eui Hong의 블로그',
+  description: 'Won Eui Hong\'s Blog',
 }
 
 export default async function BlogPage() {
