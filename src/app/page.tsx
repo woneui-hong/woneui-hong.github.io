@@ -3,19 +3,13 @@ import { getAllPosts, Post } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
-import { getLanguageFromServer } from '@/lib/lang'
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams?: { lang?: string }
-}) {
-  // Get language from searchParams and cookies
-  const lang = await getLanguageFromServer(searchParams)
-
+export default async function Home() {
+  // Static export: use default language 'en' for build
+  // Language switching is handled client-side
   let posts: Post[] = []
   try {
-    posts = await getAllPosts(lang)
+    posts = await getAllPosts('en')
   } catch (error) {
     console.error('Error loading posts:', error)
     posts = []
@@ -36,7 +30,7 @@ export default async function Home({
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}?lang=${lang}`}
+                  href={`/blog/${post.slug}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
                 >
                   <div className="p-6">

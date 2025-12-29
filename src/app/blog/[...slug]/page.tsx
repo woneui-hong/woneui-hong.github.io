@@ -4,10 +4,6 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
-import { getLanguageFromServer } from '@/lib/lang'
-
-// Force dynamic rendering to support language switching via searchParams
-export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -41,17 +37,14 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ 
   params,
-  searchParams,
 }: { 
   params: { slug: string[] }
-  searchParams: { lang?: string }
 }) {
   const slugString = Array.isArray(params.slug) ? params.slug.join('/') : params.slug
   
-  // Get language from searchParams and cookies
-  const lang = await getLanguageFromServer(searchParams)
-
-  const post = await getPostBySlug(slugString, lang)
+  // Static export: use default language 'en' for build
+  // Language switching is handled client-side
+  const post = await getPostBySlug(slugString, 'en')
 
   if (!post) {
     notFound()
@@ -64,7 +57,7 @@ export default async function BlogPostPage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           {/* Back Button */}
           <Link
-            href={`/blog?lang=${lang}`}
+            href="/blog"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft size={18} />

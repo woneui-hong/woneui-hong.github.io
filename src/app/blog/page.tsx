@@ -3,25 +3,16 @@ import { getAllPosts } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
-import { getLanguageFromServer } from '@/lib/lang'
-
-// Force dynamic rendering to support language switching via searchParams
-export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
   description: 'Won Eui Hong\'s Blog',
 }
 
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: { lang?: string }
-}) {
-  // Get language from searchParams and cookies
-  const lang = await getLanguageFromServer(searchParams)
-
-  const posts = await getAllPosts(lang)
+export default async function BlogPage() {
+  // Static export: use default language 'en' for build
+  // Language switching is handled client-side
+  const posts = await getAllPosts('en')
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -46,7 +37,7 @@ export default async function BlogPage({
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}?lang=${lang}`}
+                  href={`/blog/${post.slug}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
                 >
                   <div className="p-6">

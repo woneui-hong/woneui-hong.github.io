@@ -1,15 +1,11 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { getLanguageFromServer } from '@/lib/lang'
 import { Mail, Github, Linkedin, Facebook, Twitter, MapPin } from 'lucide-react'
 
-export default async function About({
-  searchParams,
-}: {
-  searchParams?: { lang?: string }
-}) {
-  // Get language from searchParams and cookies
-  const lang = await getLanguageFromServer(searchParams)
+export default async function About() {
+  // Static export: use default language 'en' for build
+  // Language switching is handled client-side
+  const lang: 'en' | 'ko' = 'en'
 
   const content = {
     en: {
