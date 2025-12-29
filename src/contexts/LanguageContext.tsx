@@ -26,7 +26,10 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
       .find((row) => row.startsWith('lang='))
       ?.split('=')[1] as Language | undefined
     
-    const langFromUrl = searchParams.get('lang') as Language | null
+    // In static export, searchParams might not update, so read from window.location
+    const langFromUrl = typeof window !== 'undefined'
+      ? (new URLSearchParams(window.location.search).get('lang') as Language | null)
+      : (searchParams?.get('lang') as Language | null)
 
     // Cookie takes priority as it represents global state
     const currentLang = langFromCookie || langFromUrl || 'en'
@@ -50,6 +53,28 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     }
   }, [searchParams])
 
+  // Listen for popstate events (back/forward navigation) and URL changes
+  useEffect(() => {
+    const handlePopState = () => {
+      const langFromUrl = typeof window !== 'undefined'
+        ? (new URLSearchParams(window.location.search).get('lang') as Language | null)
+        : null
+      
+      if (langFromUrl) {
+        const langFromCookie = document.cookie
+          .split('; ')
+          .find((row) => row.startsWith('lang='))
+          ?.split('=')[1] as Language | undefined
+        
+        const currentLang = langFromCookie || langFromUrl || 'en'
+        setLanguageState(currentLang)
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
   const setLanguage = (lang: Language) => {
     // Don't update state if already the same language (prevents unnecessary reloads)
     if (language === lang) {
@@ -60,16 +85,27 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     document.cookie = `lang=${lang}; path=/; max-age=31536000` // 1 year
     
     // Update state immediately for instant UI update
+    // PostsList component will detect language change and fetch new data
     setLanguageState(lang)
     
     // Build new URL with language parameter
-    const params = new URLSearchParams(searchParams?.toString() || window.location.search.substring(1))
+    const currentSearch = typeof window !== 'undefined' 
+      ? window.location.search.substring(1)
+      : (searchParams?.toString() || '')
+    const params = new URLSearchParams(currentSearch)
     params.set('lang', lang)
     const newUrl = `${pathname}?${params.toString()}`
     
-    // Use client-side navigation (no page reload)
-    // PostsList component will detect language change and fetch new data
-    router.push(newUrl, { scroll: false })
+    // Update URL without page reload using history API
+    // This works in both development and static export
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', newUrl)
+      // Trigger a custom event to notify components that URL changed
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    } else {
+      // Fallback: use Next.js router (for development)
+      router.push(newUrl, { scroll: false })
+    }
   }
 
   // Don't render children until language is initialized
