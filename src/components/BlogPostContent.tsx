@@ -47,18 +47,33 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
         if (!res.ok) {
           throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
         }
-        return res.json()
+        return res.text() // First get as text to debug
       })
-      .then((posts: Post[]) => {
+      .then(text => {
+        console.log('Raw JSON response length:', text.length)
+        console.log('Raw JSON preview:', text.substring(0, 500))
+        try {
+          const posts = JSON.parse(text)
+          console.log('Parsed posts count:', posts.length)
+          return posts
+        } catch (e) {
+          console.error('JSON parse error:', e)
+          throw e
+        }
+      })
+      .then((posts: any[]) => {
         // Find the post with matching slug
         const foundPost = posts.find(p => p.slug === slug)
         console.log('Found post:', foundPost ? 'yes' : 'no')
+        console.log('Raw post data:', foundPost)
         console.log('Post data:', foundPost ? {
           slug: foundPost.slug,
           title: foundPost.metadata?.title,
           hasContentHtml: !!foundPost.contentHtml,
           contentHtmlLength: foundPost.contentHtml?.length || 0,
-          contentHtmlPreview: foundPost.contentHtml?.substring(0, 100)
+          contentHtmlType: typeof foundPost.contentHtml,
+          contentHtmlPreview: foundPost.contentHtml?.substring(0, 100),
+          allKeys: Object.keys(foundPost || {})
         } : 'not found')
         
         if (foundPost) {
@@ -67,14 +82,22 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             console.warn('Post found but contentHtml is missing or empty', {
               slug: foundPost.slug,
               hasContentHtml: !!foundPost.contentHtml,
-              contentHtmlType: typeof foundPost.contentHtml
+              contentHtmlType: typeof foundPost.contentHtml,
+              contentHtmlValue: foundPost.contentHtml
             })
           }
+          
+          // Ensure all required fields are present
+          const postData: Post = {
+            slug: foundPost.slug,
+            metadata: foundPost.metadata || {},
+            content: foundPost.content || '',
+            contentHtml: foundPost.contentHtml || ''
+          }
+          
+          console.log('Setting post with contentHtml length:', postData.contentHtml?.length || 0)
           // Create a new object to ensure React detects the change
-          setPost({
-            ...foundPost,
-            metadata: { ...foundPost.metadata }
-          })
+          setPost(postData)
         } else {
           // If post not found, keep initial post
           console.warn('Post not found for slug:', slug, 'in language:', language)
