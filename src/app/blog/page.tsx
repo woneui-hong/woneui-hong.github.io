@@ -3,16 +3,24 @@ import { getAllPosts } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
+import { getLanguageFromServer } from '@/lib/lang'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
   description: 'Won Eui Hong\'s Blog',
 }
 
+// Force static generation for static export compatibility
+// Note: searchParams cannot be used in static export, so we use default 'en'
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export default async function BlogPage() {
   // Static export: use default language 'en' for build
-  // Language switching is handled client-side
-  const posts = await getAllPosts('en')
+  // In dynamic rendering (localhost), language switching is handled via page reload
+  const lang: 'en' | 'ko' = 'en'
+
+  const posts = await getAllPosts(lang)
 
   return (
     <main className="min-h-screen bg-gray-50">

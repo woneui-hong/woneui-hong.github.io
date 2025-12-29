@@ -3,13 +3,21 @@ import { getAllPosts, Post } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
+import { getLanguageFromServer } from '@/lib/lang'
+
+// Force static generation for static export compatibility
+// Note: searchParams cannot be used in static export, so we use default 'en'
+export const dynamic = 'force-static'
+export const dynamicParams = false
 
 export default async function Home() {
   // Static export: use default language 'en' for build
-  // Language switching is handled client-side
+  // In dynamic rendering (localhost), language switching is handled via page reload
+  const lang: 'en' | 'ko' = 'en'
+
   let posts: Post[] = []
   try {
-    posts = await getAllPosts('en')
+    posts = await getAllPosts(lang)
   } catch (error) {
     console.error('Error loading posts:', error)
     posts = []

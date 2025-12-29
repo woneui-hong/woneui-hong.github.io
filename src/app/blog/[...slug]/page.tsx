@@ -4,6 +4,7 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
+import { getLanguageFromServer } from '@/lib/lang'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -43,7 +44,7 @@ export default async function BlogPostPage({
   const slugString = Array.isArray(params.slug) ? params.slug.join('/') : params.slug
   
   // Static export: use default language 'en' for build
-  // Language switching is handled client-side
+  // In dynamic rendering (localhost), language switching is handled via page reload
   const post = await getPostBySlug(slugString, 'en')
 
   if (!post) {

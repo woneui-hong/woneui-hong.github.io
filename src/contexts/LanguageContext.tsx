@@ -59,14 +59,16 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     // Save to cookie (global state) first
     document.cookie = `lang=${lang}; path=/; max-age=31536000` // 1 year
     
-    // Update URL with language parameter using Next.js router for client-side navigation
-    // This avoids full page reload and is much faster
-    const params = new URLSearchParams(searchParams.toString())
+    // Build new URL with language parameter
+    const params = new URLSearchParams(searchParams?.toString() || window.location.search.substring(1))
     params.set('lang', lang)
     const newUrl = `${pathname}?${params.toString()}`
     
-    // Use router.push for client-side navigation (no full page reload)
-    router.push(newUrl)
+    // Always reload the page to ensure language changes are applied
+    // This works for both static export and dynamic rendering
+    // In static export, the page will reload and client-side code will read the lang param
+    // In dynamic rendering, the server will render with the correct language
+    window.location.href = newUrl
   }
 
   // Don't render children until language is initialized
