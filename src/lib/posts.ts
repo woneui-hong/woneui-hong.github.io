@@ -101,7 +101,7 @@ export function getAllPostSlugs(): string[] {
 export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Promise<Post | null> {
   // slug format: yyyy/mm/post-name or filename (for backward compatibility)
   const slugParts = slug.split('/')
-  let fullPath: string
+  let fullPath: string | undefined
 
   if (slugParts.length >= 2) {
     // yyyy/mm/post-name format - check new structure first (en/ko folders)
@@ -150,7 +150,7 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
     fullPath = path.join(postsDirectory, `${slug}.md`)
   }
   
-  if (!fs.existsSync(fullPath)) {
+  if (!fullPath || !fs.existsSync(fullPath)) {
     return null
   }
 
