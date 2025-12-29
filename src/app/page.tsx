@@ -5,15 +5,21 @@ import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
 import { getLanguageFromServer } from '@/lib/lang'
 
-// Force static generation for static export compatibility
-// Note: searchParams cannot be used in static export, so we use default 'en'
-export const dynamic = 'force-static'
+// Force static generation only for production builds (static export)
+// In development, allow dynamic rendering for language switching
+export const dynamic = process.env.NODE_ENV === 'production' ? 'force-static' : 'auto'
 export const dynamicParams = false
 
-export default async function Home() {
-  // Static export: use default language 'en' for build
-  // In dynamic rendering (localhost), language switching is handled via page reload
-  const lang: 'en' | 'ko' = 'en'
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { lang?: string }
+}) {
+  // In production (static export), use default 'en'
+  // In development (localhost), use searchParams for language switching
+  const lang = process.env.NODE_ENV === 'production' 
+    ? 'en' 
+    : (searchParams ? await getLanguageFromServer(searchParams) : 'en')
 
   let posts: Post[] = []
   try {
@@ -38,7 +44,7 @@ export default async function Home() {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}${lang === 'ko' ? '?lang=ko' : ''}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
                 >
                   <div className="p-6">

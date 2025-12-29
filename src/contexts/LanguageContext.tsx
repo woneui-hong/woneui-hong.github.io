@@ -64,11 +64,15 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     params.set('lang', lang)
     const newUrl = `${pathname}?${params.toString()}`
     
-    // Always reload the page to ensure language changes are applied
-    // This works for both static export and dynamic rendering
-    // In static export, the page will reload and client-side code will read the lang param
-    // In dynamic rendering, the server will render with the correct language
-    window.location.href = newUrl
+    // Try client-side navigation first (works in development)
+    // If that doesn't work (static export), the page will need to reload
+    // We use router.push which will work in development, and fallback to reload if needed
+    try {
+      router.push(newUrl)
+    } catch (error) {
+      // Fallback: reload the page (for static export)
+      window.location.href = newUrl
+    }
   }
 
   // Don't render children until language is initialized
