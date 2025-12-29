@@ -24,7 +24,6 @@ export default async function Home({
   try {
     posts = await getAllPosts(lang)
   } catch (error) {
-    console.error('Error loading posts:', error)
     posts = []
   }
 

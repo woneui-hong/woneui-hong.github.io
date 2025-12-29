@@ -214,7 +214,6 @@ export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
       return dateB - dateA
     })
   } catch (error) {
-    console.error('Error getting all posts:', error)
     return []
   }
 }

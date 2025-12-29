@@ -27,32 +27,26 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
     setLoading(true)
     
     // In static export, load posts data from JSON files in public folder
-    // Use absolute path to ensure it works in both dev and production
     const jsonPath = `/posts-data/${language}.json`
-    console.log('Fetching posts from:', jsonPath)
     
     fetch(jsonPath)
       .then(res => {
-        console.log('Fetch response status:', res.status, res.statusText)
         if (!res.ok) {
           throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
         }
         return res.json()
       })
       .then(data => {
-        console.log('Fetched posts data:', data?.length || 0, 'posts')
         if (data && Array.isArray(data)) {
           setPosts(data)
         } else {
           // If data format is invalid, keep initial posts
-          console.warn('Invalid posts data format, keeping initial posts', data)
           setPosts(initialPosts)
         }
         setLoading(false)
       })
-      .catch((error) => {
-        // If fetch fails (e.g., JSON file doesn't exist), keep initial posts
-        console.error('Failed to load posts for language:', language, error)
+      .catch(() => {
+        // If fetch fails, keep initial posts
         setPosts(initialPosts)
         setLoading(false)
       })

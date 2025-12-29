@@ -17,17 +17,6 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
   const [post, setPost] = useState<Post | null>(initialPost)
   const [loading, setLoading] = useState(false)
 
-  // Debug: log post changes
-  useEffect(() => {
-    console.log('Post state updated:', {
-      slug: post?.slug,
-      title: post?.metadata?.title,
-      hasContentHtml: !!post?.contentHtml,
-      contentHtmlLength: post?.contentHtml?.length || 0,
-      language
-    })
-  }, [post, language])
-
   useEffect(() => {
     // If language matches initial language, use initial post (no fetch needed)
     if (language === initialLang) {
@@ -40,97 +29,36 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
     
     // Fetch all posts for the language and find the matching one
     const jsonPath = `/posts-data/${language}.json`
-    console.log('Fetching post data from:', jsonPath, 'for slug:', slug)
     
     fetch(jsonPath)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
         }
-        return res.text() // First get as text to debug
+        return res.json()
       })
-      .then(text => {
-        console.log('Raw JSON response length:', text.length)
-        console.log('Raw JSON preview:', text.substring(0, 500))
-        try {
-          const posts = JSON.parse(text)
-          console.log('Parsed posts count:', posts.length)
-          return posts
-        } catch (e) {
-          console.error('JSON parse error:', e)
-          throw e
-        }
-      })
-      .then((posts: any[]) => {
+      .then((posts: Post[]) => {
         // Find the post with matching slug
         const foundPost = posts.find(p => p.slug === slug)
-        console.log('Found post:', foundPost ? 'yes' : 'no')
-        
-        // Deep inspection of the found post
-        if (foundPost) {
-          console.log('=== POST INSPECTION ===')
-          console.log('All keys:', Object.keys(foundPost))
-          console.log('contentHtml key exists:', 'contentHtml' in foundPost)
-          console.log('contentHtml value:', foundPost.contentHtml)
-          console.log('contentHtml type:', typeof foundPost.contentHtml)
-          console.log('contentHtml length:', foundPost.contentHtml?.length || 0)
-          console.log('contentHtml is empty string:', foundPost.contentHtml === '')
-          console.log('contentHtml is null:', foundPost.contentHtml === null)
-          console.log('contentHtml is undefined:', foundPost.contentHtml === undefined)
-          
-          // Check if contentHtml exists but is empty
-          if (foundPost.contentHtml === '' || foundPost.contentHtml === null || foundPost.contentHtml === undefined) {
-            console.error('ERROR: contentHtml is missing or empty!')
-            console.log('Full post object:', JSON.stringify(foundPost, null, 2).substring(0, 1000))
-          }
-        }
-        
-        console.log('Post data summary:', foundPost ? {
-          slug: foundPost.slug,
-          title: foundPost.metadata?.title,
-          hasContentHtml: !!foundPost.contentHtml,
-          contentHtmlLength: foundPost.contentHtml?.length || 0,
-          contentHtmlType: typeof foundPost.contentHtml,
-          contentHtmlValue: foundPost.contentHtml?.substring(0, 50) || 'EMPTY',
-          allKeys: Object.keys(foundPost || {})
-        } : 'not found')
         
         if (foundPost) {
-          // Check if contentHtml exists in the raw data
-          const contentHtmlValue = foundPost.contentHtml
-          
-          if (!contentHtmlValue || contentHtmlValue.trim() === '') {
-            console.error('CRITICAL: contentHtml is empty! Checking alternative fields...')
-            // Maybe it's stored under a different key?
-            console.log('Checking for content_html:', foundPost.content_html)
-            console.log('Checking for contentHTML:', foundPost.contentHTML)
-            console.log('Checking for html:', foundPost.html)
-            console.log('Checking for htmlContent:', foundPost.htmlContent)
-          }
-          
           // Ensure all required fields are present
           const postData: Post = {
             slug: foundPost.slug,
             metadata: foundPost.metadata || {},
             content: foundPost.content || '',
-            contentHtml: contentHtmlValue || foundPost.content_html || foundPost.contentHTML || foundPost.html || foundPost.htmlContent || ''
+            contentHtml: foundPost.contentHtml || ''
           }
           
-          console.log('Final postData.contentHtml length:', postData.contentHtml?.length || 0)
-          
-          // Create a new object to ensure React detects the change
           setPost(postData)
         } else {
           // If post not found, keep initial post
-          console.warn('Post not found for slug:', slug, 'in language:', language)
-          console.log('Available slugs:', posts.map(p => p.slug))
           setPost(initialPost)
         }
         setLoading(false)
       })
-      .catch((error) => {
+      .catch(() => {
         // If fetch fails, keep initial post
-        console.error('Failed to load post for language:', language, error)
         setPost(initialPost)
         setLoading(false)
       })
@@ -229,14 +157,7 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             prose-hr:border-gray-200 prose-hr:my-8"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
-      ) : (
-        <div className="text-center py-16">
-          <p className="text-gray-500 text-lg">Content not available</p>
-          <p className="text-gray-400 text-sm mt-2">
-            contentHtml: {post.contentHtml ? `exists (${post.contentHtml.length} chars)` : 'missing'}
-          </p>
-        </div>
-      )}
+      ) : null}
     </>
   )
 }
