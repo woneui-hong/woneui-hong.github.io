@@ -59,20 +59,17 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     // Save to cookie (global state) first
     document.cookie = `lang=${lang}; path=/; max-age=31536000` // 1 year
     
+    // Update state immediately for instant UI update
+    setLanguageState(lang)
+    
     // Build new URL with language parameter
     const params = new URLSearchParams(searchParams?.toString() || window.location.search.substring(1))
     params.set('lang', lang)
     const newUrl = `${pathname}?${params.toString()}`
     
-    // Try client-side navigation first (works in development)
-    // If that doesn't work (static export), the page will need to reload
-    // We use router.push which will work in development, and fallback to reload if needed
-    try {
-      router.push(newUrl)
-    } catch (error) {
-      // Fallback: reload the page (for static export)
-      window.location.href = newUrl
-    }
+    // Use client-side navigation (no page reload)
+    // PostsList component will detect language change and fetch new data
+    router.push(newUrl, { scroll: false })
   }
 
   // Don't render children until language is initialized
