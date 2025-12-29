@@ -1,7 +1,10 @@
 'use client'
 
+import { useMemo } from 'react'
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  // Use useMemo to ensure consistent value during hydration
+  const currentYear = useMemo(() => new Date().getFullYear(), [])
 
   return (
     <footer className="bg-primary text-white py-8 px-4 sm:px-6 lg:px-8">

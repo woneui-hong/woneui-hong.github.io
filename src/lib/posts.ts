@@ -112,18 +112,28 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
     const enMdFile = path.join(dirPath, 'en', `${postName}.md`)
     const koMdFile = path.join(dirPath, 'ko', `${postName}.md`)
     
+    const enExists = fs.existsSync(enMdFile)
+    const koExists = fs.existsSync(koMdFile)
+    
     // Try requested language first, then fallback
-    if (lang === 'ko' && fs.existsSync(koMdFile)) {
-      fullPath = koMdFile
-    } else if (lang === 'en' && fs.existsSync(enMdFile)) {
-      fullPath = enMdFile
-    } else if (fs.existsSync(enMdFile)) {
-      // Fallback to en if requested language doesn't exist
-      fullPath = enMdFile
-    } else if (fs.existsSync(koMdFile)) {
-      // Fallback to ko if en doesn't exist
-      fullPath = koMdFile
-    } else {
+    if (lang === 'ko') {
+      if (koExists) {
+        fullPath = koMdFile
+      } else if (enExists) {
+        // Fallback to en if ko doesn't exist
+        fullPath = enMdFile
+      }
+    } else if (lang === 'en') {
+      if (enExists) {
+        fullPath = enMdFile
+      } else if (koExists) {
+        // Fallback to ko if en doesn't exist
+        fullPath = koMdFile
+      }
+    }
+    
+    // If still no path found, try legacy structure
+    if (!fullPath) {
       // Legacy structure: check if it's a directory with post-name.md
       const expectedMdFile = path.join(dirPath, `${postName}.md`)
       
@@ -149,11 +159,16 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
 
   // Replace relative image paths (../res/images/ or ./images/ or images/) with absolute paths
   // The slug is the directory path (e.g., "2025/12/2025-12-16-work-prioritization-signal-noise")
+  // Always use API route to serve images dynamically from content directory
+  // Images are stored in content/posts, not in public folder
+  // All environments use API route to serve images from content folder
+  const imageBasePath = `/api/posts/${slug}/res/images`
+  
   let processedContent = content.replace(
     /!\[([^\]]*)\]\((\.\.\/)?res\/images\/([^)]+)\)/g,
     (match, alt, relative, imageName) => {
-      // Convert to absolute path: /posts/yyyy/mm/post-name/res/images/image.png
-      const imagePath = `/posts/${slug}/res/images/${imageName}`
+      // Convert to API route or static path based on build mode
+      const imagePath = `${imageBasePath}/${imageName}`
       return `![${alt}](${imagePath})`
     }
   )
@@ -162,9 +177,8 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
   processedContent = processedContent.replace(
     /!\[([^\]]*)\]\((\.\/)?images\/([^)]+)\)/g,
     (match, alt, relative, imageName) => {
-      // Convert to absolute path: /posts/yyyy/mm/post-name/images/image.png (legacy)
-      // or /posts/yyyy/mm/post-name/res/images/image.png (new structure)
-      const imagePath = `/posts/${slug}/res/images/${imageName}`
+      // Convert to API route or static path based on build mode
+      const imagePath = `${imageBasePath}/${imageName}`
       return `![${alt}](${imagePath})`
     }
   )
@@ -184,20 +198,27 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
 }
 
 export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
-  const slugs = getAllPostSlugs()
-  const posts = await Promise.all(
-    slugs.map(async (slug) => {
-      const post = await getPostBySlug(slug, lang)
-      return post!
-    })
-  )
+  try {
+    const slugs = getAllPostSlugs()
+    const posts = await Promise.all(
+      slugs.map(async (slug) => {
+        const post = await getPostBySlug(slug, lang)
+        return post
+      })
+    )
 
-  // Sort posts by date (newest first)
-  return posts.sort((a, b) => {
-    const dateA = new Date(a.metadata.date).getTime()
-    const dateB = new Date(b.metadata.date).getTime()
-    return dateB - dateA
-  })
+    // Filter out null posts and sort by date (newest first)
+    const validPosts = posts.filter((post): post is Post => post !== null)
+    
+    return validPosts.sort((a, b) => {
+      const dateA = new Date(a.metadata.date).getTime()
+      const dateB = new Date(b.metadata.date).getTime()
+      return dateB - dateA
+    })
+  } catch (error) {
+    console.error('Error getting all posts:', error)
+    return []
+  }
 }
 
 export async function getFeaturedPosts(): Promise<Post[]> {

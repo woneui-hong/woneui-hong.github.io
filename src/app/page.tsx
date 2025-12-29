@@ -3,9 +3,23 @@ import { getAllPosts } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
+import { getLanguageFromServer } from '@/lib/lang'
 
-export default async function Home() {
-  const posts = await getAllPosts()
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { lang?: string }
+}) {
+  // Get language from searchParams and cookies
+  const lang = await getLanguageFromServer(searchParams)
+
+  let posts
+  try {
+    posts = await getAllPosts(lang)
+  } catch (error) {
+    console.error('Error loading posts:', error)
+    posts = []
+  }
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -22,7 +36,7 @@ export default async function Home() {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}?lang=${lang}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
                 >
                   <div className="p-6">

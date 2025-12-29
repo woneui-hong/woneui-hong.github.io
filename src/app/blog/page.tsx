@@ -3,7 +3,10 @@ import { getAllPosts } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
-import { cookies } from 'next/headers'
+import { getLanguageFromServer } from '@/lib/lang'
+
+// Force dynamic rendering to support language switching via searchParams
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
@@ -15,11 +18,8 @@ export default async function BlogPage({
 }: {
   searchParams: { lang?: string }
 }) {
-  // Get language from URL params or cookie, default to 'en'
-  const langParam = searchParams.lang as 'en' | 'ko' | undefined
-  const cookieStore = await cookies()
-  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
-  const lang = langParam || langCookie || 'en'
+  // Get language from searchParams and cookies
+  const lang = await getLanguageFromServer(searchParams)
 
   const posts = await getAllPosts(lang)
 

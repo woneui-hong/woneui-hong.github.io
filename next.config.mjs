@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 프로덕션 빌드 시에만 정적 export 활성화
-  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  // API routes를 사용하기 위해 정적 export 비활성화
+  // 이미지는 content 폴더에서 API route를 통해 동적으로 제공됨
   images: {
     unoptimized: true,
   },

@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/copy-images.js && next dev",
-    "build": "node scripts/copy-images.js && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "copy-images": "node scripts/copy-images.js",
     "deploy": "node scripts/git-deploy.js"
   },
   "dependencies": {

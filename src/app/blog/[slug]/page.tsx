@@ -4,7 +4,10 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
-import { cookies } from 'next/headers'
+import { getLanguageFromServer } from '@/lib/lang'
+
+// Force dynamic rendering to support language switching via searchParams
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -15,17 +18,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ 
   params,
-  searchParams,
 }: { 
   params: { slug: string }
-  searchParams: { lang?: string }
 }) {
-  const langParam = searchParams.lang as 'en' | 'ko' | undefined
-  const cookieStore = await cookies()
-  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
-  const lang = langParam || langCookie || 'en'
-
-  const post = await getPostBySlug(params.slug, lang)
+  // generateMetadata runs at build time, so we use default 'en' language
+  const post = await getPostBySlug(params.slug, 'en')
 
   if (!post) {
     return {
@@ -46,11 +43,8 @@ export default async function BlogPostPage({
   params: { slug: string }
   searchParams: { lang?: string }
 }) {
-  // Get language from URL params or cookie, default to 'en'
-  const langParam = searchParams.lang as 'en' | 'ko' | undefined
-  const cookieStore = await cookies()
-  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
-  const lang = langParam || langCookie || 'en'
+  // Get language from searchParams and cookies
+  const lang = await getLanguageFromServer(searchParams)
 
   const post = await getPostBySlug(params.slug, lang)
 

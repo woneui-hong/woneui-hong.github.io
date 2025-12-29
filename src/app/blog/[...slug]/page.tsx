@@ -4,6 +4,10 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
+import { getLanguageFromServer } from '@/lib/lang'
+
+// Force dynamic rendering to support language switching via searchParams
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -11,17 +15,17 @@ export async function generateStaticParams() {
     slug: slug.split('/'), // Convert slug string to array for [...slug]
   }))
   
-  // Ensure all paths are generated for static export
-  if (process.env.NODE_ENV === 'production') {
-    console.log('Generating static params for slugs:', slugs)
-  }
-  
   return params
 }
 
-export async function generateMetadata({ params }: { params: { slug: string[] } }) {
+export async function generateMetadata({ 
+  params,
+}: { 
+  params: { slug: string[] }
+}) {
+  // generateMetadata runs at build time, so we use default 'en' language
   const slugString = Array.isArray(params.slug) ? params.slug.join('/') : params.slug
-  const post = await getPostBySlug(slugString)
+  const post = await getPostBySlug(slugString, 'en')
 
   if (!post) {
     return {
@@ -35,9 +39,19 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string[] } }) {
+export default async function BlogPostPage({ 
+  params,
+  searchParams,
+}: { 
+  params: { slug: string[] }
+  searchParams: { lang?: string }
+}) {
   const slugString = Array.isArray(params.slug) ? params.slug.join('/') : params.slug
-  const post = await getPostBySlug(slugString)
+  
+  // Get language from searchParams and cookies
+  const lang = await getLanguageFromServer(searchParams)
+
+  const post = await getPostBySlug(slugString, lang)
 
   if (!post) {
     notFound()
@@ -50,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string[
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           {/* Back Button */}
           <Link
-            href="/blog"
+            href={`/blog?lang=${lang}`}
             className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft size={18} />
