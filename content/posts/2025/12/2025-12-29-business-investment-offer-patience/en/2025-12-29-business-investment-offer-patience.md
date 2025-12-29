@@ -27,6 +27,8 @@ In the game of capitalism, business and investment serve as 'offense' and 'defen
 
 Business is active. Even when the market shows no interest in me, I must constantly throw 'jabs' at the market. These jabs are **offers**.
 
+An entrepreneur once said something that comes to mind: "Don't beg customers to 'please buy.' Instead, make them feel 'I'll lose out if I don't buy this.' That's a real offer."
+
 - Good sellers don't beg.
 - They design value so that customers feel **"I'll lose out if I don't buy this"**, making them buy without selling.
 
@@ -34,7 +36,9 @@ Business success doesn't depend on how many offers you throw, but on how many of
 
 ### 🛡️ Investment: The 'Defensive' Art of Waiting Until You Cannot Help But Buy
 
-Investment is the aesthetics of passive patience. Without being swept away by market frenzy, you wait—even if it kills you—until prices align with your principles.
+Investment is the aesthetics of passive patience. Without being swept away by market frenzy, I wait—even if it kills me—until prices align with my principles.
+
+An investor once said something I remember: "When the market goes crazy, there's only one thing I need to do. Nothing. Wait. Wait until the market comes to its senses."
 
 - Good buyers don't rush in first.
 - They wait until market panic or inefficiency forces others to sell assets **'at fire-sale prices'**, then capture value.
@@ -64,7 +68,11 @@ The most common mistake when designing business routines is obsessing over 'func
 
 ## 3. Business Routines for Value Investors
 
-Just as value investors read endless reports before pressing the buy button, aspiring entrepreneurs endlessly prepare (building websites, designing logos) before throwing offers. But **business revenue only occurs when offers meet the market.**
+Just as value investors read endless reports before pressing the buy button, aspiring entrepreneurs endlessly prepare (building websites, designing logos) before throwing offers.
+
+A mentor once said something that comes to mind: "Preparation is important. But if you only prepare, it's not a business. Business starts when offers meet the market. Until then, it's just preparation."
+
+But **business revenue only occurs when offers meet the market.**
 
 ### 🚀 A New 'Meta-Routine' for Entrepreneurs
 
@@ -78,14 +86,14 @@ These three routines create a virtuous cycle that reinforces each other. Data ac
 
 ## 💡 Conclusion: Becoming the 'Major Shareholder' of Yourself as a Company
 
-If you've protected assets through **'routines of not buying'** in investment, you must create value through **'routines that make people buy'** in business. As a solo entrepreneur, my focus is clear.
+If I've protected assets through **'routines of not buying'** in investment, I must create value through **'routines that make people buy'** in business. As a solo entrepreneur, my focus is clear.
 
 **"Use function for internal efficiency; offer exclusive data and rights externally."**
 
-This is the only way to master both offense and defense in capitalism. Protecting assets through investment patience and creating value through business offers. When we execute both simultaneously, we truly become masters of the capitalist game.
+This is the only way to master both offense and defense in capitalism. Protecting assets through investment patience and creating value through business offers. When I execute both simultaneously, I truly become a master of the capitalist game.
 
 ---
 
-**Next Step:** Among the routines you currently have, what data would become something someone 'cannot help but buy' after accumulating it for a year? Record the first log of that data today.
+**Next Step:** Among the routines I currently have, what data would become something someone 'cannot help but buy' after accumulating it for a year? I'll record the first log of that data today.
 
 

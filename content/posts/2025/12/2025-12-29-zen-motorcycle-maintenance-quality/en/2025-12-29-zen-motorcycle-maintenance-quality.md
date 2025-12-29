@@ -18,7 +18,9 @@ In this book, a 'stripped screw head' is not merely a state of poor maintenance.
 
 ### Stuckness
 
-The moment a screw won't budge, we are ejected from the world of manuals. The frustration that arises at this moment is actually the **'gateway to enlightenment'** that can break existing fixed ideas.
+The moment a screw won't budge, I am ejected from the world of manuals. The frustration that arises at this moment is actually the **'gateway to enlightenment'** that can break existing fixed ideas.
+
+A sentence Pirsig wrote comes to mind: "When a screw won't budge, you have two choices. Get angry, or listen to what this moment is trying to teach you."
 
 ### The Test of Attitude
 
@@ -28,7 +30,7 @@ How we approach a single screw is how we approach life. Handling a screw careles
 
 ## 2. The Meaning of 'Becoming One' and How Reason Interferes
 
-Why do we find it difficult to feel unity with objects or tasks?
+Why do I find it difficult to feel unity with objects or tasks?
 
 ### State of Separation vs. State of Unity
 
@@ -43,7 +45,7 @@ Western **analytical reason** is fundamentally like a 'knife'.
 
 1. **Dissection and Disconnection:** Reason cuts and categorizes objects to understand them. However, vitality and 'Quality' exist only when the whole is connected as one.
 2. **Dualistic Thinking:** By thoroughly separating "the thinking self" and "the observed object," it blocks emotional communion.
-3. **The Trap of Labels:** The moment we attach a name like "this is an engine," we see only the 'concept' we created, not the reality of that existence.
+3. **The Trap of Labels:** The moment I attach a name like "this is an engine," I see only the 'concept' I created, not the reality of that existence.
 
 ---
 
@@ -76,18 +78,23 @@ How can we set aside analytical reason and become one with the object?
 
 1. **Welcome Stuckness:** Instead of getting angry when problems won't solve, treat it as an opportunity to break free from fixed ideas.
 2. **Restore Care:** The mind that sincerely tends to the object breaks down the wall between subject and object.
-3. **Manage Gumption (Psychological Energy):** When your mind is anxious or exhausted, stop working. Only when the inner self is quiet can the signals of objects be heard.
+3. **Manage Gumption (Psychological Energy):** When my mind is anxious or exhausted, I stop working. Only when the inner self is quiet can the signals of objects be heard.
+
+Something Pirsig wrote comes to mind: "When you lose gumption, you must stop working. If you keep pushing, you'll only break things more. You must wait until your mind becomes quiet."
+
 4. **Return to Sensation:** Stop the thought "this is such-and-such" and focus solely on the sensations of **'this very moment'**—the touch at your fingertips, sounds, smells.
 
 ---
 
 ## 💡 Conclusion: The Power to Endure the Nameless State
 
-Seeing objects as they are is difficult. However, through the practice of erasing 'names' and filling with 'sensation,' we can reconnect with the world. Whether washing dishes, coding, or tightening a screw, when the act itself becomes the purpose, we step into the world of 'Quality'.
+Seeing objects as they are is difficult. However, through the practice of erasing 'names' and filling with 'sensation,' I was able to reconnect with the world. Whether washing dishes, coding, or tightening a screw, when the act itself becomes the purpose, I step into the world of 'Quality'.
+
+A technician once said something that comes to mind: "When I fix a machine, I talk to it. I listen to what the machine wants. I don't command the machine. I follow the direction the machine wants to go."
 
 > "A skilled technician converses with the machine. He becomes part of the machine and moves together with it in the direction it wants to go."
 
 ---
 
-**Next Step:** Choose one thing you do today. While doing it, stop the thought "this is such-and-such" and focus solely on the touch at your fingertips and the experience of the moment. In that moment, you will step into the world of 'Quality'.
+**Next Step:** I'll choose one thing I do today. While doing it, I'll stop the thought "this is such-and-such" and focus solely on the touch at my fingertips and the experience of the moment. In that moment, I will step into the world of 'Quality'.
 
