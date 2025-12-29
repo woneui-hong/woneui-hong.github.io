@@ -14,7 +14,7 @@ export default function Hero() {
           className="text-center"
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight text-balance">
-            Automation is the Tool, Prioritization is the Strategy.
+            Business, Investment, and the art of automation
           </h1>
           
           <motion.p
@@ -23,9 +23,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-10 leading-relaxed text-balance max-w-3xl mx-auto"
           >
-            We define <span className="font-semibold text-primary">WHAT</span> to do before asking AI <span className="font-semibold text-primary">HOW</span> to do it.
-            <br className="hidden sm:block" />
-            <span className="font-semibold text-primary">WP (Work Prioritization)</span> comes before DX or AX.
+            Exploring the intersection of business strategy, investment wisdom, and the thoughtful application of automation.
           </motion.p>
 
           <motion.div
