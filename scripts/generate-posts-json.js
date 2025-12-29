@@ -109,12 +109,38 @@ async function getPostBySlug(slug, lang = 'en') {
   const matter = require('gray-matter')
   const { data, content } = matter(fileContents)
 
-  // Simple metadata extraction (without HTML processing for JSON)
+  // Process images - same as in posts.ts
+  const imageBasePath = `/posts/${slug}/res/images`
+  let processedContent = content.replace(
+    /!\[([^\]]*)\]\((\.\.\/)?res\/images\/([^)]+)\)/g,
+    (match, alt, relative, imageName) => {
+      const imagePath = `${imageBasePath}/${imageName}`
+      return `![${alt}](${imagePath})`
+    }
+  )
+  processedContent = processedContent.replace(
+    /!\[([^\]]*)\]\((\.\/)?images\/([^)]+)\)/g,
+    (match, alt, relative, imageName) => {
+      const imagePath = `${imageBasePath}/${imageName}`
+      return `![${alt}](${imagePath})`
+    }
+  )
+
+  // Convert markdown to HTML using remark
+  const { remark } = require('remark')
+  const remarkGfm = require('remark-gfm')
+  const remarkHtml = require('remark-html')
+  
+  const processedHtml = await remark()
+    .use(remarkGfm.default || remarkGfm)
+    .use(remarkHtml.default || remarkHtml)
+    .process(processedContent)
+
   return {
     slug,
     metadata: data,
-    content: content.substring(0, 200), // Just excerpt for JSON
-    contentHtml: '', // Not needed for list view
+    content: content,
+    contentHtml: processedHtml.toString(),
   }
 }
 
