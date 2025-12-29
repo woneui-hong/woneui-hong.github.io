@@ -159,10 +159,8 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
 
   // Replace relative image paths (../res/images/ or ./images/ or images/) with absolute paths
   // The slug is the directory path (e.g., "2025/12/2025-12-16-work-prioritization-signal-noise")
-  // Always use API route to serve images dynamically from content directory
-  // Images are stored in content/posts, not in public folder
-  // All environments use API route to serve images from content folder
-  const imageBasePath = `/api/posts/${slug}/res/images`
+  // Use static path for GitHub Pages deployment (images are copied to public/posts during build)
+  const imageBasePath = `/posts/${slug}/res/images`
   
   let processedContent = content.replace(
     /!\[([^\]]*)\]\((\.\.\/)?res\/images\/([^)]+)\)/g,
