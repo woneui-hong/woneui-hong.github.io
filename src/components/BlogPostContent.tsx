@@ -39,6 +39,12 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
       })
       .then((posts: Post[]) => {
         // Find the post with matching slug
+        // Debug: Log slug matching process
+        if (process.env.NODE_ENV === 'development') {
+          console.log('[BlogPostContent] Looking for slug:', slug)
+          console.log('[BlogPostContent] Available slugs:', posts.map(p => p.slug))
+        }
+        
         const foundPost = posts.find(p => p.slug === slug)
         
         if (foundPost) {
@@ -50,9 +56,17 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             contentHtml: foundPost.contentHtml || ''
           }
           
+          if (process.env.NODE_ENV === 'development') {
+            console.log('[BlogPostContent] Found post:', foundPost.slug)
+          }
+          
           setPost(postData)
         } else {
           // If post not found, keep initial post
+          if (process.env.NODE_ENV === 'development') {
+            console.warn('[BlogPostContent] Post not found for slug:', slug)
+            console.warn('[BlogPostContent] Available slugs:', posts.map(p => p.slug))
+          }
           setPost(initialPost)
         }
         setLoading(false)

@@ -126,6 +126,26 @@ async function getPostBySlug(slug, lang = 'en') {
     }
   )
 
+  // Fix bold markdown syntax inside quotes (e.g., **"text"** or **'text'** or **"text"**)
+  // Remark sometimes fails to parse bold text immediately adjacent to quotes,
+  // so we pre-process these patterns and convert them to HTML directly
+  // First handle cases with matching quotes (same opening and closing quote)
+  processedContent = processedContent.replace(
+    /\*\*(["'""])((?:(?!\*\*)[\s\S])+?)\1\*\*/g,
+    (match, quote, text) => {
+      // Convert directly to HTML
+      return `<strong>${quote}${text}${quote}</strong>`
+    }
+  )
+  // Then handle cases with different quote types (opening and closing quotes)
+  processedContent = processedContent.replace(
+    /\*\*(["'""])((?:(?!\*\*)[\s\S])+?)(["'""])\*\*/g,
+    (match, quote1, text, quote2) => {
+      // Convert directly to HTML to ensure proper rendering
+      return `<strong>${quote1}${text}${quote2}</strong>`
+    }
+  )
+
   // Convert markdown to HTML using remark
   const { remark } = require('remark')
   const remarkGfm = require('remark-gfm')
