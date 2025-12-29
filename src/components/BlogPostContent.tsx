@@ -65,26 +65,47 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
         // Find the post with matching slug
         const foundPost = posts.find(p => p.slug === slug)
         console.log('Found post:', foundPost ? 'yes' : 'no')
-        console.log('Raw post data:', foundPost)
-        console.log('Post data:', foundPost ? {
+        
+        // Deep inspection of the found post
+        if (foundPost) {
+          console.log('=== POST INSPECTION ===')
+          console.log('All keys:', Object.keys(foundPost))
+          console.log('contentHtml key exists:', 'contentHtml' in foundPost)
+          console.log('contentHtml value:', foundPost.contentHtml)
+          console.log('contentHtml type:', typeof foundPost.contentHtml)
+          console.log('contentHtml length:', foundPost.contentHtml?.length || 0)
+          console.log('contentHtml is empty string:', foundPost.contentHtml === '')
+          console.log('contentHtml is null:', foundPost.contentHtml === null)
+          console.log('contentHtml is undefined:', foundPost.contentHtml === undefined)
+          
+          // Check if contentHtml exists but is empty
+          if (foundPost.contentHtml === '' || foundPost.contentHtml === null || foundPost.contentHtml === undefined) {
+            console.error('ERROR: contentHtml is missing or empty!')
+            console.log('Full post object:', JSON.stringify(foundPost, null, 2).substring(0, 1000))
+          }
+        }
+        
+        console.log('Post data summary:', foundPost ? {
           slug: foundPost.slug,
           title: foundPost.metadata?.title,
           hasContentHtml: !!foundPost.contentHtml,
           contentHtmlLength: foundPost.contentHtml?.length || 0,
           contentHtmlType: typeof foundPost.contentHtml,
-          contentHtmlPreview: foundPost.contentHtml?.substring(0, 100),
+          contentHtmlValue: foundPost.contentHtml?.substring(0, 50) || 'EMPTY',
           allKeys: Object.keys(foundPost || {})
         } : 'not found')
         
         if (foundPost) {
-          // Ensure contentHtml exists and is not empty
-          if (!foundPost.contentHtml || foundPost.contentHtml.trim() === '') {
-            console.warn('Post found but contentHtml is missing or empty', {
-              slug: foundPost.slug,
-              hasContentHtml: !!foundPost.contentHtml,
-              contentHtmlType: typeof foundPost.contentHtml,
-              contentHtmlValue: foundPost.contentHtml
-            })
+          // Check if contentHtml exists in the raw data
+          const contentHtmlValue = foundPost.contentHtml
+          
+          if (!contentHtmlValue || contentHtmlValue.trim() === '') {
+            console.error('CRITICAL: contentHtml is empty! Checking alternative fields...')
+            // Maybe it's stored under a different key?
+            console.log('Checking for content_html:', foundPost.content_html)
+            console.log('Checking for contentHTML:', foundPost.contentHTML)
+            console.log('Checking for html:', foundPost.html)
+            console.log('Checking for htmlContent:', foundPost.htmlContent)
           }
           
           // Ensure all required fields are present
@@ -92,10 +113,11 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             slug: foundPost.slug,
             metadata: foundPost.metadata || {},
             content: foundPost.content || '',
-            contentHtml: foundPost.contentHtml || ''
+            contentHtml: contentHtmlValue || foundPost.content_html || foundPost.contentHTML || foundPost.html || foundPost.htmlContent || ''
           }
           
-          console.log('Setting post with contentHtml length:', postData.contentHtml?.length || 0)
+          console.log('Final postData.contentHtml length:', postData.contentHtml?.length || 0)
+          
           // Create a new object to ensure React detects the change
           setPost(postData)
         } else {

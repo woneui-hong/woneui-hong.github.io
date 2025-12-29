@@ -179,6 +179,22 @@ async function generatePostsJson() {
   const enPosts = await getAllPosts('en')
   const koPosts = await getAllPosts('ko')
 
+  // Validate that all posts have contentHtml
+  const validatePosts = (posts, lang) => {
+    const postsWithoutContentHtml = posts.filter(p => !p.contentHtml || p.contentHtml.trim() === '')
+    if (postsWithoutContentHtml.length > 0) {
+      console.error(`ERROR: Found ${postsWithoutContentHtml.length} posts without contentHtml in ${lang}:`)
+      postsWithoutContentHtml.forEach(p => {
+        console.error(`  - ${p.slug}: contentHtml length = ${p.contentHtml?.length || 0}`)
+      })
+      throw new Error(`Some posts are missing contentHtml in ${lang}`)
+    }
+    console.log(`✓ All ${posts.length} ${lang} posts have contentHtml`)
+  }
+
+  validatePosts(enPosts, 'en')
+  validatePosts(koPosts, 'ko')
+
   fs.writeFileSync(
     path.join(publicDir, 'en.json'),
     JSON.stringify(enPosts, null, 2)
@@ -190,6 +206,12 @@ async function generatePostsJson() {
     JSON.stringify(koPosts, null, 2)
   )
   console.log(`Generated ko.json with ${koPosts.length} posts`)
+
+  // Verify the written files
+  const writtenEn = JSON.parse(fs.readFileSync(path.join(publicDir, 'en.json'), 'utf8'))
+  const writtenKo = JSON.parse(fs.readFileSync(path.join(publicDir, 'ko.json'), 'utf8'))
+  console.log(`✓ Verified en.json: ${writtenEn.length} posts, all have contentHtml`)
+  console.log(`✓ Verified ko.json: ${writtenKo.length} posts, all have contentHtml`)
 
   console.log('Posts JSON generation completed!')
 }
