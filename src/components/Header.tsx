@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import LanguageToggle from './LanguageToggle'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,16 +41,24 @@ export default function Header() {
                 {item.label}
               </motion.a>
             ))}
+            <Suspense fallback={<div className="w-16 h-8" />}>
+              <LanguageToggle />
+            </Suspense>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-gray-700"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <Suspense fallback={<div className="w-16 h-8" />}>
+              <LanguageToggle />
+            </Suspense>
+            <button
+              className="p-2 text-gray-700"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -72,6 +81,11 @@ export default function Header() {
                     {item.label}
                   </a>
                 ))}
+                <div className="px-4">
+                  <Suspense fallback={<div className="w-16 h-8" />}>
+                    <LanguageToggle />
+                  </Suspense>
+                </div>
               </div>
             </motion.div>
           )}

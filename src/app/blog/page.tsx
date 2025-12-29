@@ -3,14 +3,25 @@ import { getAllPosts } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
+import { cookies } from 'next/headers'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
   description: 'Won Eui Hong\'s Blog',
 }
 
-export default async function BlogPage() {
-  const posts = await getAllPosts()
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: { lang?: string }
+}) {
+  // Get language from URL params or cookie, default to 'en'
+  const langParam = searchParams.lang as 'en' | 'ko' | undefined
+  const cookieStore = await cookies()
+  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
+  const lang = langParam || langCookie || 'en'
+
+  const posts = await getAllPosts(lang)
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -35,7 +46,7 @@ export default async function BlogPage() {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}?lang=${lang}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
                 >
                   <div className="p-6">

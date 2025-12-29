@@ -26,7 +26,7 @@ export interface Post {
 
 /**
  * Recursively find all markdown files in the posts directory
- * Supports yyyy/mm folder structure and post-name/post-name.md structure
+ * Supports yyyy/mm/post-name/en/post-name.md and yyyy/mm/post-name/ko/post-name.md structure
  */
 function getAllMarkdownFiles(dir: string, basePath: string = ''): Array<{ filePath: string; slug: string }> {
   const files: Array<{ filePath: string; slug: string }> = []
@@ -42,17 +42,41 @@ function getAllMarkdownFiles(dir: string, basePath: string = ''): Array<{ filePa
     const relativePath = basePath ? `${basePath}/${entry.name}` : entry.name
 
     if (entry.isDirectory()) {
-      // Check if directory contains a markdown file with the same name as the directory
-      const dirName = entry.name
-      const expectedMdFile = path.join(fullPath, `${dirName}.md`)
+      // Check if this directory contains en/ or ko/ subdirectories (new structure)
+      const enPath = path.join(fullPath, 'en')
+      const koPath = path.join(fullPath, 'ko')
       
-      if (fs.existsSync(expectedMdFile)) {
-        // Directory contains a markdown file with the same name, use directory name as slug
-        const slug = relativePath
-        files.push({ filePath: expectedMdFile, slug })
+      if (fs.existsSync(enPath) || fs.existsSync(koPath)) {
+        // New structure: post-name/en/post-name.md or post-name/ko/post-name.md
+        const dirName = entry.name
+        
+        // Check en folder first (default)
+        const enMdFile = path.join(enPath, `${dirName}.md`)
+        if (fs.existsSync(enMdFile)) {
+          const slug = relativePath
+          files.push({ filePath: enMdFile, slug })
+        } else {
+          // Fallback to ko folder if en doesn't exist
+          const koMdFile = path.join(koPath, `${dirName}.md`)
+          if (fs.existsSync(koMdFile)) {
+            const slug = relativePath
+            files.push({ filePath: koMdFile, slug })
+          }
+        }
       } else {
-        // Recursively search in subdirectories
-        files.push(...getAllMarkdownFiles(fullPath, relativePath))
+        // Legacy structure: check if directory contains a markdown file with the same name
+        const expectedMdFile = path.join(fullPath, `${entry.name}.md`)
+        
+        if (fs.existsSync(expectedMdFile)) {
+          // Directory contains a markdown file with the same name, use directory name as slug
+          const slug = relativePath
+          files.push({ filePath: expectedMdFile, slug })
+        } else {
+          // Recursively search in subdirectories (but skip res, en, ko folders)
+          if (entry.name !== 'res' && entry.name !== 'en' && entry.name !== 'ko') {
+            files.push(...getAllMarkdownFiles(fullPath, relativePath))
+          }
+        }
       }
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       // Skip template and README files
@@ -74,23 +98,42 @@ export function getAllPostSlugs(): string[] {
   return files.map((file) => file.slug)
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Promise<Post | null> {
   // slug format: yyyy/mm/post-name or filename (for backward compatibility)
   const slugParts = slug.split('/')
   let fullPath: string
 
   if (slugParts.length >= 2) {
-    // yyyy/mm/post-name format - check if it's a directory with post-name.md
+    // yyyy/mm/post-name format - check new structure first (en/ko folders)
     const dirPath = path.join(postsDirectory, ...slugParts)
     const postName = slugParts[slugParts.length - 1]
-    const expectedMdFile = path.join(dirPath, `${postName}.md`)
     
-    if (fs.existsSync(expectedMdFile)) {
-      // Directory with post-name.md file
-      fullPath = expectedMdFile
+    // Check new structure: post-name/en/post-name.md or post-name/ko/post-name.md
+    const enMdFile = path.join(dirPath, 'en', `${postName}.md`)
+    const koMdFile = path.join(dirPath, 'ko', `${postName}.md`)
+    
+    // Try requested language first, then fallback
+    if (lang === 'ko' && fs.existsSync(koMdFile)) {
+      fullPath = koMdFile
+    } else if (lang === 'en' && fs.existsSync(enMdFile)) {
+      fullPath = enMdFile
+    } else if (fs.existsSync(enMdFile)) {
+      // Fallback to en if requested language doesn't exist
+      fullPath = enMdFile
+    } else if (fs.existsSync(koMdFile)) {
+      // Fallback to ko if en doesn't exist
+      fullPath = koMdFile
     } else {
-      // Regular markdown file (legacy format)
-      fullPath = path.join(postsDirectory, ...slugParts) + '.md'
+      // Legacy structure: check if it's a directory with post-name.md
+      const expectedMdFile = path.join(dirPath, `${postName}.md`)
+      
+      if (fs.existsSync(expectedMdFile)) {
+        // Directory with post-name.md file
+        fullPath = expectedMdFile
+      } else {
+        // Regular markdown file (legacy format)
+        fullPath = path.join(postsDirectory, ...slugParts) + '.md'
+      }
     }
   } else {
     // Legacy format: just filename (for backward compatibility)
@@ -104,13 +147,24 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
-  // Replace relative image paths (./images/ or images/) with absolute paths
+  // Replace relative image paths (../res/images/ or ./images/ or images/) with absolute paths
   // The slug is the directory path (e.g., "2025/12/2025-12-16-work-prioritization-signal-noise")
   let processedContent = content.replace(
+    /!\[([^\]]*)\]\((\.\.\/)?res\/images\/([^)]+)\)/g,
+    (match, alt, relative, imageName) => {
+      // Convert to absolute path: /posts/yyyy/mm/post-name/res/images/image.png
+      const imagePath = `/posts/${slug}/res/images/${imageName}`
+      return `![${alt}](${imagePath})`
+    }
+  )
+  
+  // Also handle legacy image paths for backward compatibility
+  processedContent = processedContent.replace(
     /!\[([^\]]*)\]\((\.\/)?images\/([^)]+)\)/g,
     (match, alt, relative, imageName) => {
-      // Convert to absolute path: /posts/yyyy/mm/post-name/images/image.png
-      const imagePath = `/posts/${slug}/images/${imageName}`
+      // Convert to absolute path: /posts/yyyy/mm/post-name/images/image.png (legacy)
+      // or /posts/yyyy/mm/post-name/res/images/image.png (new structure)
+      const imagePath = `/posts/${slug}/res/images/${imageName}`
       return `![${alt}](${imagePath})`
     }
   )
@@ -129,11 +183,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 }
 
-export async function getAllPosts(): Promise<Post[]> {
+export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
   const slugs = getAllPostSlugs()
   const posts = await Promise.all(
     slugs.map(async (slug) => {
-      const post = await getPostBySlug(slug)
+      const post = await getPostBySlug(slug, lang)
       return post!
     })
   )

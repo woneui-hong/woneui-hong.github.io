@@ -4,6 +4,7 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User, ArrowLeft } from 'lucide-react'
+import { cookies } from 'next/headers'
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
@@ -12,8 +13,19 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
+export async function generateMetadata({ 
+  params,
+  searchParams,
+}: { 
+  params: { slug: string }
+  searchParams: { lang?: string }
+}) {
+  const langParam = searchParams.lang as 'en' | 'ko' | undefined
+  const cookieStore = await cookies()
+  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
+  const lang = langParam || langCookie || 'en'
+
+  const post = await getPostBySlug(params.slug, lang)
 
   if (!post) {
     return {
@@ -27,8 +39,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
+export default async function BlogPostPage({ 
+  params,
+  searchParams,
+}: { 
+  params: { slug: string }
+  searchParams: { lang?: string }
+}) {
+  // Get language from URL params or cookie, default to 'en'
+  const langParam = searchParams.lang as 'en' | 'ko' | undefined
+  const cookieStore = await cookies()
+  const langCookie = cookieStore.get('lang')?.value as 'en' | 'ko' | undefined
+  const lang = langParam || langCookie || 'en'
+
+  const post = await getPostBySlug(params.slug, lang)
 
   if (!post) {
     notFound()
@@ -41,7 +65,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           {/* Back Button */}
           <Link
-            href="/blog"
+            href={`/blog?lang=${lang}`}
             className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft size={18} />
