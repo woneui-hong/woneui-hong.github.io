@@ -26,3 +26,4 @@ At some point, you see what's most important in the absence of signals and focus
 
 When it comes to prioritizing tasks, the ability to identify X is more effective than the ability to measure the order of A, B, C, D, .... This is because if X works, A, B, C, D, ... will become unnecessary in the first place.
 
+

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/posts'
+import { getAllPosts, Post } from '@/lib/posts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Calendar, Tag, User } from 'lucide-react'
@@ -13,7 +13,7 @@ export default async function Home({
   // Get language from searchParams and cookies
   const lang = await getLanguageFromServer(searchParams)
 
-  let posts
+  let posts: Post[] = []
   try {
     posts = await getAllPosts(lang)
   } catch (error) {

@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { getLanguageFromServer } from '@/lib/lang'
-import { Mail, Github, Linkedin, Facebook, Twitter } from 'lucide-react'
+import { Mail, Github, Linkedin, Facebook, Twitter, MapPin } from 'lucide-react'
 
 export default async function About({
   searchParams,
@@ -14,13 +14,15 @@ export default async function About({
   const content = {
     en: {
       title: 'About Me',
-      subtitle: 'Building the future of work through automation and prioritization',
+      subtitle: 'Identifying what truly matters—the X that makes everything else unnecessary',
       intro: 'Hello, I\'m Won Eui Hong',
       description: [
-        'I am passionate about creating solutions that help people work smarter, not harder. My focus is on work prioritization and automation - understanding what needs to be done before figuring out how to automate it.',
-        'I believe that effective prioritization (WP - Work Prioritization) is the foundation of any successful automation strategy. Before diving into Developer Experience (DX) or Automation Experience (AX), we must first clearly define what work matters most.',
-        'Through my work, I explore how we can leverage AI and automation tools to enhance human decision-making rather than replace it. The goal is to create systems that amplify our ability to focus on what truly matters.',
+        'In a world saturated with signals and noise, I write about the art of identifying X—the most important work that, once done, renders everything else unnecessary. This isn\'t about doing more; it\'s about doing what matters.',
+        'My work explores three interconnected themes: work prioritization that shifts focus from signal strength to importance, the irreplaceable human dimensions in an AI-driven world, and the strategic interplay between business offers and investment patience.',
+        'I believe that true effectiveness comes not from processing more information, but from sensing what deserves to exist. Through energy-efficient thinking, quality perception, and unique lived experience, we can orchestrate technology rather than compete with it—becoming composers who give meaning to the symphony that AI can play, but cannot conceive.',
       ],
+      coreOffer: 'This blog offers a single promise: the ability to identify X—the work that makes everything else unnecessary—through frameworks that prioritize importance over urgency, quality over quantity, and depth over speed.',
+      location: 'South Callingwood, Edmonton, Canada',
       contact: 'Get in Touch',
       email: 'Email',
       github: 'GitHub',
@@ -30,13 +32,15 @@ export default async function About({
     },
     ko: {
       title: '소개',
-      subtitle: '자동화와 우선순위화를 통해 미래의 업무 방식을 구축합니다',
+      subtitle: '진정으로 중요한 것—X를 식별하는 것, 그것이 모든 나머지를 불필요하게 만든다',
       intro: '안녕하세요, 홍원의입니다',
       description: [
-        '사람들이 더 똑똑하게, 더 열심히가 아닌 더 효율적으로 일할 수 있도록 돕는 솔루션을 만드는 것에 열정을 가지고 있습니다. 저의 관심사는 업무 우선순위화와 자동화입니다 - 어떻게 자동화할지 고민하기 전에 무엇을 해야 하는지 이해하는 것이 중요합니다.',
-        '효과적인 우선순위화(WP - Work Prioritization)가 성공적인 자동화 전략의 기반이라고 믿습니다. 개발자 경험(DX)이나 자동화 경험(AX)에 뛰어들기 전에, 무엇이 가장 중요한 업무인지 명확히 정의해야 합니다.',
-        '제 작업을 통해 AI와 자동화 도구를 활용하여 인간의 의사결정을 대체하는 것이 아니라 향상시킬 수 있는 방법을 탐구합니다. 목표는 진정으로 중요한 것에 집중할 수 있는 우리의 능력을 증폭시키는 시스템을 만드는 것입니다.',
+        '신호와 노이즈로 포화된 세상에서, 저는 X를 식별하는 기술에 대해 씁니다—한 번 완료되면 다른 모든 것을 불필요하게 만드는 가장 중요한 업무입니다. 이것은 더 많이 하는 것이 아니라, 중요한 것을 하는 것입니다.',
+        '제 글은 세 가지 상호연결된 주제를 탐구합니다: 신호 강도에서 중요도로 초점을 전환하는 업무 우선순위화, AI 주도 세계에서 대체 불가능한 인간적 차원, 그리고 사업의 오퍼와 투자의 인내 사이의 전략적 상호작용입니다.',
+        '진정한 효과성은 더 많은 정보를 처리하는 데서 오는 것이 아니라, 존재할 가치가 있는 것을 감지하는 데서 온다고 믿습니다. 에너지 효율적인 사고, 품질 인식, 그리고 고유한 경험을 통해, 우리는 기술과 경쟁하기보다는 기술을 조율할 수 있습니다—AI가 연주할 수 있지만 상상할 수 없는 교향곡에 의미를 부여하는 작곡가가 되는 것입니다.',
       ],
+      coreOffer: '이 블로그는 단 하나의 약속을 제공합니다: 긴급함보다 중요도, 양보다 질, 속도보다 깊이를 우선시하는 프레임워크를 통해 X—다른 모든 것을 불필요하게 만드는 업무—를 식별하는 능력입니다.',
+      location: 'South Callingwood, Edmonton, Canada',
       contact: '연락하기',
       email: '이메일',
       github: 'GitHub',
@@ -66,9 +70,13 @@ export default async function About({
 
             {/* Introduction Section */}
             <div className="mb-12">
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
                 {t.intro}
               </h2>
+              <div className="flex items-center gap-2 text-gray-600 mb-8">
+                <MapPin size={18} className="text-gray-500" />
+                <span className="text-base">{t.location}</span>
+              </div>
               <div className="space-y-6">
                 {t.description.map((paragraph, index) => (
                   <p
@@ -79,6 +87,16 @@ export default async function About({
                   </p>
                 ))}
               </div>
+            </div>
+
+            {/* Core Offer Section */}
+            <div className="mb-12 bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
+                {lang === 'en' ? 'Core Offer' : '핵심 제안'}
+              </h3>
+              <p className="text-gray-800 text-lg md:text-xl leading-relaxed font-medium italic">
+                {t.coreOffer}
+              </p>
             </div>
 
             {/* Contact Section */}

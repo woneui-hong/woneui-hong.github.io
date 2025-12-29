@@ -47,3 +47,4 @@ console.log('Copying images from content/posts to public/posts...')
 copyImagesRecursive(contentPostsDir, publicPostsDir)
 console.log('Image copy completed!')
 
+

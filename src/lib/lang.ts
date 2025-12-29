@@ -47,3 +47,4 @@ export function getLanguageFromClient(defaultLang: Language = 'en'): Language {
   return langFromUrl || langFromCookie || defaultLang
 }
 
+

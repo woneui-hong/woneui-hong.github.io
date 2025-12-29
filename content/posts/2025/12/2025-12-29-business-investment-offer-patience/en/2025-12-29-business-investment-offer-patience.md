@@ -88,3 +88,4 @@ This is the only way to master both offense and defense in capitalism. Protectin
 
 **Next Step:** Among the routines you currently have, what data would become something someone 'cannot help but buy' after accumulating it for a year? Record the first log of that data today.
 
+
