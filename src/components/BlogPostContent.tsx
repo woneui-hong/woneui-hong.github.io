@@ -138,7 +138,7 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
           </div>
           <div className="flex items-center gap-2">
             <Calendar size={16} />
-            <span>
+            <span suppressHydrationWarning>
               {new Date(post.metadata.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',

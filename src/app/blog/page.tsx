@@ -37,10 +37,9 @@ export default async function BlogPage({
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Won Eui Hong
             </h1>
-
           </div>
 
-          {/* Posts Grid */}
+          {/* Main Content with Sidebar */}
           <PostsList initialPosts={posts} initialLang={lang} />
         </div>
       </div>
