@@ -15,21 +15,6 @@ quarter: "3Q2025"
 
 ---
 
-## Company Overview
-
-**Canadian Natural Resources Limited** (TSX: CNQ, NYSE: CNQ) is one of Canada's largest independent oil and natural gas producers, with vast oil sands assets and production facilities distributed worldwide.
-
-### Basic Information
-
-* **Company Name:** Canadian Natural Resources Limited
-* **Exchange/Ticker:** TSX: CNQ, NYSE: CNQ
-* **Headquarters:** Calgary, Alberta, Canada
-* **President:** Tim S. McKay
-* **Founded:** 1973
-* **Main Business:** Oil sands mining and upgrading, conventional crude oil and natural gas production
-
----
-
 ## 0. Overview: Summary of Part 1 and Purpose of Part 2
 
 While Part 1 covered CNQ's overwhelming production volumes and low-cost structure, Part 2 analyzes how those costs are calculated and the practical impact of recent vertical integration and regulatory environment on enterprise value.
