@@ -6,6 +6,7 @@ category: "Work Prioritization"
 tags: ["Work Prioritization", "Productivity", "Signal Processing", "Business Strategy"]
 excerpt: "I naturally process information in the order C→D→A, reacting to noise before signals. As I became more skilled, I shifted to B→A and eventually learned to focus only on X—the most important work that makes everything else unnecessary."
 featured: true
+published: false
 ---
 
 Consider the image below. Left alone, I tend to process information in the order C→D→A. I react to noise before signals, and even within noise, I'm drawn to strong noise first. I reluctantly process strong noise (C), weak noise (D), and strong signal (A), but then ignore weak signal (B). This tendency was even more pronounced when watching YouTube videos than when working.

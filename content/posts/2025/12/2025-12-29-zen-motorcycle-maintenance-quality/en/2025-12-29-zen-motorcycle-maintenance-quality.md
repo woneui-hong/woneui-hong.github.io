@@ -6,6 +6,7 @@ category: "Philosophy & Book Review"
 tags: ["Zen and the Art of Motorcycle Maintenance", "Robert Pirsig", "Quality", "Peace of Mind", "Philosophy", "Book Review"]
 excerpt: "Robert Pirsig's classic 'Zen and the Art of Motorcycle Maintenance' is not simply a book about mechanical repair. It is a philosophical journey addressing how to restore the broken connection between 'self' and 'world'. From the cosmic meaning contained in a single screw to the invisible yet felt concept of 'Quality', here are the key insights that transform one's attitude toward life."
 featured: true
+published: false
 ---
 
 Robert Pirsig's classic **"Zen and the Art of Motorcycle Maintenance"** is not simply a book about mechanical repair. It is a philosophical journey addressing how to restore the broken connection between 'self' and 'world'. Here, I organize the key concepts explored in the book.

@@ -6,6 +6,7 @@ category: "Philosophy & Book Review"
 tags: ["Zen and the Art of Motorcycle Maintenance", "Robert Pirsig", "Quality", "Peace of Mind", "Philosophy", "Book Review"]
 excerpt: "로버트 피어시그의 고전 『선과 모터사이클 관리술』은 단순히 기계 정비에 관한 책이 아니다. 이 책은 '나'와 '세상' 사이의 끊어진 연결을 어떻게 회복할 것인가를 다루는 철학적 여정이다. 나사 하나에 담긴 우주적 의미부터 보이지 않으나 느껴지는 '질'의 개념까지, 삶의 태도를 바꾸는 핵심 통찰을 정리한다."
 featured: true
+published: false
 ---
 
 로버트 피어시그의 고전 『선과 모터사이클 관리술』은 단순히 기계 정비에 관한 책이 아니다. 이 책은 '나'와 '세상' 사이의 끊어진 연결을 어떻게 회복할 것인가를 다루는 철학적 여정이다. 책에서 다루는 핵심 개념들을 정리해 본다.

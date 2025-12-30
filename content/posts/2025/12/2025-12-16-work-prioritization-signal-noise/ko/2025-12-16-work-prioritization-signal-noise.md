@@ -6,6 +6,7 @@ category: "Work Prioritization"
 tags: ["Work Prioritization", "Productivity", "Signal Processing", "Business Strategy"]
 excerpt: "나는 자연스럽게 C→D→A 순서로 정보를 처리하며, 신호보다 노이즈에 먼저 반응했다. 숙련되면서 B→A로 전환하고, 결국 X에만 집중하는 방법을 배웠다. X는 가장 중요한 업무로, 다른 모든 것을 불필요하게 만든다."
 featured: true
+published: false
 ---
 
 아래 이미지를 고려해보자. 그대로 두면, 나는 C→D→A 순서로 정보를 처리하는 경향이 있었다. 신호보다 노이즈에 먼저 반응하며, 노이즈 내에서도 강한 노이즈에 먼저 끌렸다. 강한 노이즈(C), 약한 노이즈(D), 강한 신호(A)를 마지못해 처리하지만, 약한 신호(B)는 무시했다. 이 경향은 일할 때보다 유튜브 동영상을 볼 때 더욱 두드러졌다.

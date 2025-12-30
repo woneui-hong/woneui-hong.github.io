@@ -174,7 +174,10 @@ async function getAllPosts(lang = 'en') {
       })
     )
 
-    const validPosts = posts.filter((post) => post !== null)
+    // Filter out null posts and unpublished posts (published !== false)
+    const validPosts = posts.filter((post) => {
+      return post !== null && post.metadata.published !== false
+    })
     
     return validPosts.sort((a, b) => {
       const dateA = new Date(a.metadata.date).getTime()

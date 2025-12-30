@@ -6,6 +6,7 @@ category: "Philosophy & Life"
 tags: ["Philosophy", "Life", "Choice", "Self-Discovery", "Purpose", "Christopher Alexander"]
 excerpt: "Understanding the moment lightning strikes the ground, I realized: causes don't create results; results choose causes. I didn't come to make choices; I came to understand the choices I've already made. Here are practical methods for expanding my range of choices through the MOST test and checklists."
 featured: true
+published: false
 ---
 
 I had long believed that past events came together to create who I am now. But understanding the moment lightning strikes the ground completely reversed my thinking.

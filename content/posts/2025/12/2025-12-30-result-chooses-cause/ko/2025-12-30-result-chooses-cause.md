@@ -6,6 +6,7 @@ category: "Philosophy & Life"
 tags: ["Philosophy", "Life", "Choice", "Self-Discovery", "Purpose", "Christopher Alexander"]
 excerpt: "번개가 지면에 꽂히는 순간을 이해하며 깨달은 것: 원인이 결과를 만드는 게 아니라, 결과가 원인을 선택한다. 나는 선택하러 온 것이 아니라, 선택을 이해하러 왔다. MOST 테스트와 체크리스트를 통해 나의 선택지를 넓혀가는 실천적 방법들을 정리한다."
 featured: true
+published: false
 ---
 
 나는 오랫동안 과거의 사건들이 모여 지금의 나를 만들었다고 믿어왔다. 하지만 번개가 지면에 꽂히는 순간을 이해하며 내 생각은 완전히 뒤집혔다.

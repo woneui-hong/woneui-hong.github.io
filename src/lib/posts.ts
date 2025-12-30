@@ -15,6 +15,7 @@ export interface PostMetadata {
   tags: string[]
   excerpt: string
   featured?: boolean
+  published?: boolean
 }
 
 export interface Post {
@@ -225,8 +226,10 @@ export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
       })
     )
 
-    // Filter out null posts and sort by date (newest first)
-    const validPosts = posts.filter((post): post is Post => post !== null)
+    // Filter out null posts and unpublished posts (published !== false)
+    const validPosts = posts.filter((post): post is Post => {
+      return post !== null && post.metadata.published !== false
+    })
     
     return validPosts.sort((a, b) => {
       const dateA = new Date(a.metadata.date).getTime()

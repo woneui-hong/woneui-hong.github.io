@@ -6,6 +6,7 @@ category: "Business & Strategy"
 tags: ["Business", "Investment", "Strategy", "Entrepreneurship", "Value Investing", "Philosophy"]
 excerpt: "Through practicing 'meta-routines that improve routines' in investment study and exercise, I've realized: business and investment operate in opposite directions of energy. Business is the offensive act of throwing irresistible offers; investment is the defensive art of waiting until you cannot help but buy."
 featured: true
+published: false
 ---
 
 Through practicing **'meta-routines that improve routines'** in investment study and exercise, I've come to realize something: Why do people with perfect routines hesitate when facing 'business'?

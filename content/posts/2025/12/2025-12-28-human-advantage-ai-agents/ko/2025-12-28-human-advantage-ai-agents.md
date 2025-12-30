@@ -6,6 +6,7 @@ category: "Technology & Philosophy"
 tags: ["AI", "Human-Computer Interaction", "Philosophy", "Future of Work", "Technology"]
 excerpt: "AI 에이전트가 재귀적 자기 개선을 달성함에 따라, 기계 능력과 인간 노력 사이의 격차가 넓어진다. 이 풍경에서 번영하려면, 속도로 경쟁하는 것에서 벗어나 세 가지 대체 불가능한 인간적 차원을 받아들여야 한다: 에너지 효율성, 품질 감지, 그리고 고유한 경험."
 featured: true
+published: false
 ---
 
 AI 에이전트가 재귀적 자기 개선 능력을 갖춘 세상에서, 기술 진화의 속도는 이미 인간의 선형 학습 곡선을 오래전에 추월했다. 기계 출력과 인간 노력 사이의 격차가 넓어지면서, 나는 근본적인 질문에 직면했다:

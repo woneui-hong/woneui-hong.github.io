@@ -6,6 +6,7 @@ category: "Business & Strategy"
 tags: ["Business", "Investment", "Strategy", "Entrepreneurship", "Value Investing", "Philosophy"]
 excerpt: "투자 공부와 운동을 통해 '루틴을 개선하는 메타 루틴'을 실천하며 깨달은 점: 사업과 투자는 에너지의 방향이 정반대다. 사업은 거절할 수 없는 오퍼를 던지는 공격이고, 투자는 안 살 수 없는 상황까지 기다리는 수비다."
 featured: true
+published: false
 ---
 
 **루틴을 개선하는 메타 루틴**을 실천해오며 생각해보았다. 왜 루틴을 가진 사람은 '사업' 앞에서는 머뭇거리게 되는가?
