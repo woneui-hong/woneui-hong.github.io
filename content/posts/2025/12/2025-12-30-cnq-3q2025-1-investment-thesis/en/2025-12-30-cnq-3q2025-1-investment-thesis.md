@@ -1,5 +1,5 @@
 ---
-title: "CNQ.TO, 3Q2025 (Part 1)"
+title: "Asymmetric Reward Structure"
 date: 2025-12-30
 time: "16:00"
 author: "Won Eui Hong"

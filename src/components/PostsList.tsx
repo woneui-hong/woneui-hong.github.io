@@ -12,10 +12,130 @@ interface PostsListProps {
   initialLang: 'en' | 'ko'
 }
 
+// Helper function to parse date string (handles both YYYY-MM-DD and ISO 8601 formats)
+// Also handles Date objects from gray-matter parsing
+function parseDate(dateStr: string | Date | undefined | null): { year: number; month: number; day: number } | null {
+  if (!dateStr) return null
+  
+  // Handle Date objects (from gray-matter parsing)
+  if (dateStr instanceof Date) {
+    const year = dateStr.getFullYear()
+    const month = dateStr.getMonth() + 1
+    const day = dateStr.getDate()
+    return { year, month, day }
+  }
+  
+  // Handle string types
+  if (typeof dateStr !== 'string') return null
+  
+  // Handle ISO 8601 format: "2025-12-29T00:00:00.000Z" or "2025-12-29T00:00:00Z"
+  if (dateStr.includes('T')) {
+    const datePart = dateStr.split('T')[0]
+    const parts = datePart.split('-')
+    if (parts.length === 3) {
+      const year = Number(parts[0])
+      const month = Number(parts[1])
+      const day = Number(parts[2])
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        return { year, month, day }
+      }
+    }
+  }
+  
+  // Handle YYYY-MM-DD format
+  const parts = dateStr.split('-')
+  if (parts.length === 3) {
+    const year = Number(parts[0])
+    const month = Number(parts[1])
+    const day = Number(parts[2])
+    if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+      return { year, month, day }
+    }
+  }
+  
+  return null
+}
+
+// Helper function to parse time string (handles HH:mm format)
+function parseTime(timeStr: string | undefined | null): { hour: number; minute: number } | null {
+  if (!timeStr || typeof timeStr !== 'string') return { hour: 0, minute: 0 }
+  
+  const parts = timeStr.split(':')
+  if (parts.length >= 2) {
+    const hour = Number(parts[0])
+    const minute = Number(parts[1])
+    if (!isNaN(hour) && !isNaN(minute)) {
+      return { hour, minute }
+    }
+  }
+  
+  return { hour: 0, minute: 0 }
+}
+
+// Helper function to sort posts by date and time (newer first)
+function sortPostsByDate(posts: Post[]): Post[] {
+  if (!posts || posts.length === 0) {
+    return posts
+  }
+  
+  try {
+    // Create a copy and sort
+    const sorted = [...posts].sort((a, b) => {
+      const dateA = a.metadata?.date
+      const timeA = a.metadata?.time || '00:00'
+      const dateB = b.metadata?.date
+      const timeB = b.metadata?.time || '00:00'
+      
+      // Parse dates
+      const parsedDateA = parseDate(dateA)
+      const parsedDateB = parseDate(dateB)
+      const parsedTimeA = parseTime(timeA)
+      const parsedTimeB = parseTime(timeB)
+      
+      // If either date is invalid, put invalid ones at the end
+      if (!parsedDateA || !parsedTimeA) {
+        if (!parsedDateB || !parsedTimeB) return 0
+        return 1 // A is invalid, put it after B
+      }
+      if (!parsedDateB || !parsedTimeB) {
+        return -1 // B is invalid, put it after A
+      }
+      
+      // Create Date objects (month is 0-indexed in JavaScript Date)
+      const timestampA = new Date(
+        parsedDateA.year, 
+        parsedDateA.month - 1, 
+        parsedDateA.day, 
+        parsedTimeA.hour, 
+        parsedTimeA.minute
+      ).getTime()
+      
+      const timestampB = new Date(
+        parsedDateB.year, 
+        parsedDateB.month - 1, 
+        parsedDateB.day, 
+        parsedTimeB.hour, 
+        parsedTimeB.minute
+      ).getTime()
+      
+      // Compare timestamps (newer first = descending order)
+      // timestampB - timestampA means:
+      // - If B is newer (larger timestamp), result is positive → B comes first ✓
+      // - If A is newer (larger timestamp), result is negative → A comes first ✓
+      return timestampB - timestampA
+    })
+    
+    return sorted
+  } catch (error) {
+    console.error('Error sorting posts:', error)
+    return posts // Return unsorted posts if sorting fails
+  }
+}
+
 export default function PostsList({ initialPosts, initialLang }: PostsListProps) {
   // Always call hooks at the top level (React rules)
   const languageContext = useLanguage()
-  const [posts, setPosts] = useState<Post[]>(initialPosts)
+  const [posts, setPosts] = useState<Post[]>(sortPostsByDate(initialPosts))
   const [loading, setLoading] = useState(false)
   const [language, setLanguage] = useState<Language>(initialLang)
   const [isClient, setIsClient] = useState(false)
@@ -53,7 +173,7 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
 
     // If language matches initial language, use initial posts (no fetch needed)
     if (language === initialLang) {
-      setPosts(initialPosts)
+      setPosts(sortPostsByDate(initialPosts))
       return
     }
 
@@ -81,7 +201,7 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
             content: '',
             contentHtml: '', // Not needed for list view
           }))
-          setPosts(posts)
+          setPosts(sortPostsByDate(posts))
         } else {
           // If data format is invalid, try old format
           throw new Error('Invalid metadata format')
@@ -99,24 +219,24 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
           })
           .then(data => {
             if (data && Array.isArray(data)) {
-              setPosts(data)
+              setPosts(sortPostsByDate(data))
             } else {
-              setPosts(initialPosts)
+              setPosts(sortPostsByDate(initialPosts))
             }
             setLoading(false)
           })
           .catch(() => {
             // If both fail, keep initial posts
-            setPosts(initialPosts)
+            setPosts(sortPostsByDate(initialPosts))
             setLoading(false)
           })
       })
   }, [language, initialLang, initialPosts, isClient])
 
 
-  // Filter posts based on selected filters
+  // Filter and sort posts based on selected filters
   const filteredPosts = useMemo(() => {
-    return posts.filter(post => {
+    const filtered = posts.filter(post => {
       // Stock filter
       if (selectedStock && (!post.metadata.tags || !post.metadata.tags.includes(selectedStock))) {
         return false
@@ -146,6 +266,47 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
       }
 
       return true
+    })
+
+    // Sort by date and time (newer first)
+    return filtered.sort((a, b) => {
+      const dateA = a.metadata.date
+      const timeA = a.metadata.time || '00:00'
+      const dateB = b.metadata.date
+      const timeB = b.metadata.time || '00:00'
+      
+      // Parse dates
+      const parsedDateA = parseDate(dateA)
+      const parsedDateB = parseDate(dateB)
+      const parsedTimeA = parseTime(timeA)
+      const parsedTimeB = parseTime(timeB)
+      
+      // If either date is invalid, keep original order
+      if (!parsedDateA || !parsedDateB || !parsedTimeA || !parsedTimeB) {
+        return 0
+      }
+      
+      // Create Date objects (month is 0-indexed in JavaScript Date)
+      const timestampA = new Date(
+        parsedDateA.year, 
+        parsedDateA.month - 1, 
+        parsedDateA.day, 
+        parsedTimeA.hour, 
+        parsedTimeA.minute
+      ).getTime()
+      
+      const timestampB = new Date(
+        parsedDateB.year, 
+        parsedDateB.month - 1, 
+        parsedDateB.day, 
+        parsedTimeB.hour, 
+        parsedTimeB.minute
+      ).getTime()
+      
+      // Return negative if B is newer (B should come first)
+      // Return positive if A is newer (A should come first)
+      // For descending order (newer first): return timestampB - timestampA
+      return timestampB - timestampA
     })
   }, [posts, selectedStock, selectedYear, selectedMonth, selectedTag])
 
@@ -210,7 +371,7 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
         {!isClient ? (
         // Server-side: show initial posts without filtering to avoid hydration mismatch
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
+          {sortPostsByDate(posts).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}${currentLanguage === 'ko' ? '?lang=ko' : ''}`}

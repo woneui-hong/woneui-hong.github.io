@@ -234,23 +234,115 @@ export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
       return post !== null && post.metadata.published !== false
     })
     
-    return validPosts.sort((a, b) => {
-      // Parse date and time for comparison
+    // Helper function to parse date string (handles both YYYY-MM-DD and ISO 8601 formats)
+    // Also handles Date objects from gray-matter parsing
+    const parseDate = (dateStr: string | Date | undefined | null): { year: number; month: number; day: number } | null => {
+      if (!dateStr) return null
+      
+      // Handle Date objects (from gray-matter parsing)
+      if (dateStr instanceof Date) {
+        const year = dateStr.getFullYear()
+        const month = dateStr.getMonth() + 1
+        const day = dateStr.getDate()
+        return { year, month, day }
+      }
+      
+      // Handle string types
+      if (typeof dateStr !== 'string') return null
+      
+      // Handle ISO 8601 format: "2025-12-29T00:00:00.000Z" or "2025-12-29T00:00:00Z"
+      if (dateStr.includes('T')) {
+        const datePart = dateStr.split('T')[0]
+        const parts = datePart.split('-')
+        if (parts.length === 3) {
+          const year = Number(parts[0])
+          const month = Number(parts[1])
+          const day = Number(parts[2])
+          if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+            return { year, month, day }
+          }
+        }
+      }
+      
+      // Handle YYYY-MM-DD format
+      const parts = dateStr.split('-')
+      if (parts.length === 3) {
+        const year = Number(parts[0])
+        const month = Number(parts[1])
+        const day = Number(parts[2])
+        if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+          return { year, month, day }
+        }
+      }
+      
+      return null
+    }
+
+    // Helper function to parse time string (handles HH:mm format)
+    const parseTime = (timeStr: string | undefined | null): { hour: number; minute: number } | null => {
+      if (!timeStr || typeof timeStr !== 'string') return { hour: 0, minute: 0 }
+      
+      const parts = timeStr.split(':')
+      if (parts.length >= 2) {
+        const hour = Number(parts[0])
+        const minute = Number(parts[1])
+        if (!isNaN(hour) && !isNaN(minute)) {
+          return { hour, minute }
+        }
+      }
+      
+      return { hour: 0, minute: 0 }
+    }
+
+    // Sort posts by date and time (newer first)
+    // Create a copy to avoid mutating the original array
+    const sortedPosts = [...validPosts].sort((a, b) => {
       const dateA = a.metadata.date
       const timeA = a.metadata.time || '00:00'
       const dateB = b.metadata.date
       const timeB = b.metadata.time || '00:00'
       
-      // Create datetime string for comparison: YYYY-MM-DD HH:mm
-      const datetimeA = `${dateA} ${timeA}`
-      const datetimeB = `${dateB} ${timeB}`
+      // Parse dates
+      const parsedDateA = parseDate(dateA)
+      const parsedDateB = parseDate(dateB)
+      const parsedTimeA = parseTime(timeA)
+      const parsedTimeB = parseTime(timeB)
+      
+      // If either date is invalid, keep original order
+      if (!parsedDateA || !parsedDateB || !parsedTimeA || !parsedTimeB) {
+        // If one is invalid, put it at the end
+        if (!parsedDateA || !parsedTimeA) return 1
+        if (!parsedDateB || !parsedTimeB) return -1
+        return 0
+      }
+      
+      // Create Date objects (month is 0-indexed in JavaScript Date)
+      const timestampA = new Date(
+        parsedDateA.year, 
+        parsedDateA.month - 1, 
+        parsedDateA.day, 
+        parsedTimeA.hour, 
+        parsedTimeA.minute
+      ).getTime()
+      
+      const timestampB = new Date(
+        parsedDateB.year, 
+        parsedDateB.month - 1, 
+        parsedDateB.day, 
+        parsedTimeB.hour, 
+        parsedTimeB.minute
+      ).getTime()
       
       // Compare timestamps (newer first)
-      const timestampA = new Date(datetimeA).getTime()
-      const timestampB = new Date(datetimeB).getTime()
+      // Return negative if B is newer (B should come first)
+      // Return positive if A is newer (A should come first)
+      // For descending order: timestampB - timestampA
       return timestampB - timestampA
     })
+    
+    return sortedPosts
   } catch (error) {
+    console.error('Error getting all posts:', error)
     return []
   }
 }

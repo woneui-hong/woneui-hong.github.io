@@ -1,5 +1,5 @@
 ---
-title: "AMR: The Mathematical Inevitability of Capital Compression and Financial Stability"
+title: "Net Cash $453M, 42% Capital Compression"
 date: 2025-12-30
 time: "10:00"
 author: "Won Eui Hong"

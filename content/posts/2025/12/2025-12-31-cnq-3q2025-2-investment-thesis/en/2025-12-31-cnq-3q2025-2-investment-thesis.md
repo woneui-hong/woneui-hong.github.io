@@ -1,5 +1,5 @@
 ---
-title: "CNQ Valuation Part 2: The Physics of Operations and Behind the Numbers"
+title: "Operational Efficiency and Vertical Integration"
 date: 2025-12-31
 time: "17:00"
 author: "Won Eui Hong"

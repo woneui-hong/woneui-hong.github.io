@@ -1,5 +1,5 @@
 ---
-title: "AMR: 시장의 우려와 경영진의 방어 논리"
+title: "낮은 멀티플의 이유"
 date: 2025-12-30
 time: "14:00"
 author: "Won Eui Hong"

@@ -204,22 +204,129 @@ async function getPostBySlug(slug, lang = 'en') {
 }
 
 /**
+ * Parse date string (handles both YYYY-MM-DD and ISO 8601 formats)
+ * Also handles Date objects from gray-matter parsing
+ */
+function parseDate(dateStr) {
+  if (!dateStr) return null
+  
+  // Handle Date objects (from gray-matter parsing)
+  if (dateStr instanceof Date) {
+    const year = dateStr.getFullYear()
+    const month = dateStr.getMonth() + 1
+    const day = dateStr.getDate()
+    return { year, month, day }
+  }
+  
+  // Handle string types
+  if (typeof dateStr !== 'string') return null
+  
+  // Handle ISO 8601 format: "2025-12-29T00:00:00.000Z" or "2025-12-29T00:00:00Z"
+  if (dateStr.includes('T')) {
+    const datePart = dateStr.split('T')[0]
+    const parts = datePart.split('-')
+    if (parts.length === 3) {
+      const year = Number(parts[0])
+      const month = Number(parts[1])
+      const day = Number(parts[2])
+      if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+        return { year, month, day }
+      }
+    }
+  }
+  
+  // Handle YYYY-MM-DD format
+  const parts = dateStr.split('-')
+  if (parts.length === 3) {
+    const year = Number(parts[0])
+    const month = Number(parts[1])
+    const day = Number(parts[2])
+    if (!isNaN(year) && !isNaN(month) && !isNaN(day)) {
+      return { year, month, day }
+    }
+  }
+  
+  return null
+}
+
+/**
+ * Parse time string (handles HH:mm format)
+ */
+function parseTime(timeStr) {
+  if (!timeStr || typeof timeStr !== 'string') return { hour: 0, minute: 0 }
+  
+  const parts = timeStr.split(':')
+  if (parts.length >= 2) {
+    const hour = Number(parts[0])
+    const minute = Number(parts[1])
+    if (!isNaN(hour) && !isNaN(minute)) {
+      return { hour, minute }
+    }
+  }
+  
+  return { hour: 0, minute: 0 }
+}
+
+/**
  * Sort posts by date (newer first)
  */
 function sortPostsByDate(posts) {
-  return posts.sort((a, b) => {
-    const dateA = a.metadata.date
-    const timeA = a.metadata.time || '00:00'
-    const dateB = b.metadata.date
-    const timeB = b.metadata.time || '00:00'
+  if (!posts || posts.length === 0) {
+    return posts
+  }
+  
+  try {
+    // Create a copy to avoid mutating the original array
+    const sorted = [...posts].sort((a, b) => {
+      const dateA = a.metadata?.date
+      const timeA = a.metadata?.time || '00:00'
+      const dateB = b.metadata?.date
+      const timeB = b.metadata?.time || '00:00'
+      
+      // Parse dates
+      const parsedDateA = parseDate(dateA)
+      const parsedDateB = parseDate(dateB)
+      const parsedTimeA = parseTime(timeA)
+      const parsedTimeB = parseTime(timeB)
+      
+      // If either date is invalid, put invalid ones at the end
+      if (!parsedDateA || !parsedTimeA) {
+        if (!parsedDateB || !parsedTimeB) return 0
+        return 1 // A is invalid, put it after B
+      }
+      if (!parsedDateB || !parsedTimeB) {
+        return -1 // B is invalid, put it after A
+      }
+      
+      // Create Date objects (month is 0-indexed in JavaScript Date)
+      const timestampA = new Date(
+        parsedDateA.year, 
+        parsedDateA.month - 1, 
+        parsedDateA.day, 
+        parsedTimeA.hour, 
+        parsedTimeA.minute
+      ).getTime()
+      
+      const timestampB = new Date(
+        parsedDateB.year, 
+        parsedDateB.month - 1, 
+        parsedDateB.day, 
+        parsedTimeB.hour, 
+        parsedTimeB.minute
+      ).getTime()
+      
+      // Compare timestamps (newer first = descending order)
+      // timestampB - timestampA means:
+      // - If B is newer (larger timestamp), result is positive → B comes first ✓
+      // - If A is newer (larger timestamp), result is negative → A comes first ✓
+      return timestampB - timestampA
+    })
     
-    const datetimeA = `${dateA} ${timeA}`
-    const datetimeB = `${dateB} ${timeB}`
-    
-    const timestampA = new Date(datetimeA).getTime()
-    const timestampB = new Date(datetimeB).getTime()
-    return timestampB - timestampA
-  })
+    return sorted
+  } catch (error) {
+    console.error('Error sorting posts:', error)
+    return posts // Return unsorted posts if sorting fails
+  }
 }
 
 module.exports = {

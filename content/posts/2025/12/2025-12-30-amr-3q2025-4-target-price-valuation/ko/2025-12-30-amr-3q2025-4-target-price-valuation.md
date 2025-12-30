@@ -1,5 +1,5 @@
 ---
-title: "AMR 목표 주가 산정: 현상 유지 시나리오와 자본 효율성 기반"
+title: "목표 주가 $245"
 date: 2025-12-30
 time: "15:00"
 author: "Won Eui Hong"

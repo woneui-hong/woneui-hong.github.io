@@ -1,5 +1,5 @@
 ---
-title: "AMR: 자본 압축의 수학적 필연성과 재무적 안정성"
+title: "순현금 $453M, 자본 압축 42%"
 date: 2025-12-30
 time: "10:00"
 author: "Won Eui Hong"

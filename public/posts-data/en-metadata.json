@@ -1,102 +1,8 @@
 [
   {
-    "slug": "2025/12/2025-12-29-amr-2025q3-analysis",
+    "slug": "2025/12/2025-12-31-cnq-3q2025-2-investment-thesis",
     "metadata": {
-      "title": "AMR, 3Q2025",
-      "date": "2025-12-29T00:00:00.000Z",
-      "time": "09:00",
-      "author": "Won Eui Hong",
-      "category": "Investment Analysis",
-      "tags": [
-        "AMR",
-        "Met-Coal",
-        "Capital-Allocation",
-        "Value-Investing"
-      ],
-      "excerpt": "Analysis of AMR's intrinsic value and capital allocation strategy as revealed in the 2025 Q3 10-Q report",
-      "series": "AMR 3Q2025",
-      "part": 1
-    }
-  },
-  {
-    "slug": "2025/12/2025-12-30-amr-capital-compression-financial-stability",
-    "metadata": {
-      "title": "AMR: The Mathematical Inevitability of Capital Compression and Financial Stability",
-      "date": "2025-12-30T00:00:00.000Z",
-      "time": "10:00",
-      "author": "Won Eui Hong",
-      "category": "Financial Analysis",
-      "tags": [
-        "AMR"
-      ],
-      "excerpt": "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials.",
-      "series": "AMR 3Q2025",
-      "part": 2
-    }
-  },
-  {
-    "slug": "2025/12/2025-12-30-amr-market-concerns-management-defense",
-    "metadata": {
-      "title": "AMR: Market Concerns and Management's Defense Logic",
-      "date": "2025-12-30T00:00:00.000Z",
-      "time": "14:00",
-      "author": "Won Eui Hong",
-      "category": "Investment Risk Analysis",
-      "tags": [
-        "AMR",
-        "Risk-Analysis",
-        "Management-Strategy",
-        "Value-Investing"
-      ],
-      "excerpt": "AMR's low multiple (P/FCF 6.2x) reflects not simply undervaluation but the market's structural fear. This report analyzes three core risks that investors are concerned about and examines how management is defending against them with specific numbers and strategies.",
-      "series": "AMR 3Q2025",
-      "part": 3
-    }
-  },
-  {
-    "slug": "2025/12/2025-12-30-amr-target-price-valuation",
-    "metadata": {
-      "title": "AMR Target Price Valuation: Status Quo Scenario and Capital Efficiency-Based Approach",
-      "date": "2025-12-30T00:00:00.000Z",
-      "time": "15:00",
-      "author": "Won Eui Hong",
-      "category": "Valuation Analysis",
-      "tags": [
-        "AMR",
-        "Valuation",
-        "Target-Price",
-        "Capital-Efficiency",
-        "Share-Buyback"
-      ],
-      "excerpt": "This report calculates AMR's target price assuming that current revenue realization prices and margin rates remain constant going forward. Through aggressive share repurchases reducing share count, maintaining the status quo itself leads to mechanical per-share value appreciation.",
-      "series": "AMR 3Q2025",
-      "part": 4
-    }
-  },
-  {
-    "slug": "2025/12/2025-12-30-cnq-investment-thesis",
-    "metadata": {
-      "title": "CNQ.TO, 3Q2025 (Part 1)",
-      "date": "2025-12-30T00:00:00.000Z",
-      "time": "16:00",
-      "author": "Won Eui Hong",
-      "category": "Investment Analysis",
-      "tags": [
-        "CNQ",
-        "Oil-Sands",
-        "Energy",
-        "Value-Investing",
-        "Capital-Allocation"
-      ],
-      "excerpt": "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model.",
-      "series": "CNQ 3Q2025",
-      "part": 1
-    }
-  },
-  {
-    "slug": "2025/12/2025-12-31-cnq-investment-thesis-part2",
-    "metadata": {
-      "title": "CNQ Valuation Part 2: The Physics of Operations and Behind the Numbers",
+      "title": "Operational Efficiency and Vertical Integration",
       "date": "2025-12-31T00:00:00.000Z",
       "time": "17:00",
       "author": "Won Eui Hong",
@@ -110,7 +16,107 @@
       ],
       "excerpt": "While Part 1 covered CNQ's overwhelming production volumes and low-cost structure, Part 2 analyzes how those costs are calculated and the practical impact of recent vertical integration and regulatory environment on enterprise value.",
       "series": "CNQ 3Q2025",
-      "part": 2
+      "part": 2,
+      "quarter": "3Q2025"
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-30-cnq-3q2025-1-investment-thesis",
+    "metadata": {
+      "title": "Asymmetric Reward Structure",
+      "date": "2025-12-30T00:00:00.000Z",
+      "time": "16:00",
+      "author": "Won Eui Hong",
+      "category": "Investment Analysis",
+      "tags": [
+        "CNQ",
+        "Oil-Sands",
+        "Energy",
+        "Value-Investing",
+        "Capital-Allocation"
+      ],
+      "excerpt": "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model.",
+      "series": "CNQ 3Q2025",
+      "part": 1,
+      "quarter": "3Q2025"
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-30-amr-3q2025-4-target-price-valuation",
+    "metadata": {
+      "title": "Target Price $245",
+      "date": "2025-12-30T00:00:00.000Z",
+      "time": "15:00",
+      "author": "Won Eui Hong",
+      "category": "Valuation Analysis",
+      "tags": [
+        "AMR",
+        "Valuation",
+        "Target-Price",
+        "Capital-Efficiency",
+        "Share-Buyback"
+      ],
+      "excerpt": "This report calculates AMR's target price assuming that current revenue realization prices and margin rates remain constant going forward. Through aggressive share repurchases reducing share count, maintaining the status quo itself leads to mechanical per-share value appreciation.",
+      "series": "AMR 3Q2025",
+      "part": 4,
+      "quarter": "3Q2025"
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-30-amr-3q2025-3-market-concerns-management-defense",
+    "metadata": {
+      "title": "Why the Low Multiple?",
+      "date": "2025-12-30T00:00:00.000Z",
+      "time": "14:00",
+      "author": "Won Eui Hong",
+      "category": "Investment Risk Analysis",
+      "tags": [
+        "AMR",
+        "Risk-Analysis",
+        "Management-Strategy",
+        "Value-Investing"
+      ],
+      "excerpt": "AMR's low multiple (P/FCF 6.2x) reflects not simply undervaluation but the market's structural fear. This report analyzes three core risks that investors are concerned about and examines how management is defending against them with specific numbers and strategies.",
+      "series": "AMR 3Q2025",
+      "part": 3,
+      "quarter": "3Q2025"
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-30-amr-3q2025-2-capital-compression-financial-stability",
+    "metadata": {
+      "title": "Net Cash $453M, 42% Capital Compression",
+      "date": "2025-12-30T00:00:00.000Z",
+      "time": "10:00",
+      "author": "Won Eui Hong",
+      "category": "Financial Analysis",
+      "tags": [
+        "AMR"
+      ],
+      "excerpt": "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials.",
+      "series": "AMR 3Q2025",
+      "part": 2,
+      "quarter": "3Q2025"
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-29-amr-3q2025-1-analysis",
+    "metadata": {
+      "title": "Capital Compression and Physical Moat",
+      "date": "2025-12-29T00:00:00.000Z",
+      "time": "09:00",
+      "author": "Won Eui Hong",
+      "category": "Investment Analysis",
+      "tags": [
+        "AMR",
+        "Met-Coal",
+        "Capital-Allocation",
+        "Value-Investing"
+      ],
+      "excerpt": "Analysis of AMR's intrinsic value and capital allocation strategy as revealed in the 2025 Q3 10-Q report",
+      "series": "AMR 3Q2025",
+      "part": 1,
+      "quarter": "3Q2025"
     }
   }
 ]

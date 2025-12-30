@@ -1,5 +1,5 @@
 ---
-title: "CNQ 가치 평가 제2편: 운영의 물리학과 숫자의 이면"
+title: "운영 효율성과 수직계열화"
 date: 2025-12-31
 time: "17:00"
 author: "Won Eui Hong"

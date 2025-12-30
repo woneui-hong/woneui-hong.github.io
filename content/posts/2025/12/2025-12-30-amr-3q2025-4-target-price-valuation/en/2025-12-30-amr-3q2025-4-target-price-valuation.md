@@ -1,5 +1,5 @@
 ---
-title: "AMR Target Price Valuation: Status Quo Scenario and Capital Efficiency-Based Approach"
+title: "Target Price $245"
 date: 2025-12-30
 time: "15:00"
 author: "Won Eui Hong"

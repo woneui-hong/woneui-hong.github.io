@@ -1,5 +1,5 @@
 ---
-title: "CNQ.TO, 3Q2025 (제1편)"
+title: "비대칭적 보상 구조"
 date: 2025-12-30
 time: "16:00"
 author: "Won Eui Hong"
