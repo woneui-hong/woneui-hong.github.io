@@ -68,7 +68,42 @@ Beyond the surface numbers of financial statements, the physics of the business 
 
 ## 3. Valuation: Focus on Cash Flow
 
-While current market prices reflect temporary net income declines, the fundamental cash flow generation capability remains robust.
+This report analyzes the gap between CNQ's intrinsic value and market price based on the company's Q3 2025 results and financial position. The core focus is on the payback period and shareholder return potential based on strong cash generation capability.
+
+### [Table 2] Valuation Metrics (2025 Q3 Basis)
+
+Key metrics calculated based on current share price (CAD 45.49) and latest financial data are as follows.
+
+| Metric | Value | Calculation Basis and Notes |
+| :--- | :--- | :--- |
+| **Market Cap** | **CAD 95.3 B** | Share price $45.49 × approximately 2.094 billion shares outstanding |
+| **Enterprise Value (EV)** | **CAD 112.5 B** | Market cap + net debt |
+| **Book Value** | **CAD 40.46 B** | Total equity per balance sheet |
+| **Net Debt** | **CAD 17.16 B** | Total debt minus cash and cash equivalents |
+| **P/E Ratio** | **13.2x** | Market cap relative to annualized adjusted net earnings ($7.2B) |
+| **EV/EBITDA** | **7.2x** | Using annualized adjusted funds flow (AFF $15.7B) as proxy |
+| **SBC (Stock-Based Compensation)** | **CAD 281.6 M** | Annualized figure based on quarterly expenditure of approximately $70.4M |
+| **P/FCF (Price/Free Cash Flow)** | **11.9x** | Based on annualized operating FCF (approximately $8.0B) |
+| **P/B Ratio (Price-to-Book)** | **2.35x** | Market cap / total book value |
+
+### The Payback Period
+
+"The time required to recover the investment if the entire company were acquired, assuming current free cash flow (FCF) is maintained"
+
+* **Calculation Basis**: Enterprise Value (EV) $111.92 B / Annual FCF $7.73 B
+* **Payback Period**: **Approximately 14.5 years**
+* **Analysis**: Considering the capital-intensive nature of the energy sector and asset life of over 25 years, a payback period of less than 15 years suggests that the price relative to cash generation capability is reasonable. In particular, once debt repayment is completed and shareholder return rate increases to 100%, the actual payback speed is expected to accelerate.
+
+### Target Price and Fair Value Calculation
+
+This calculates the fair share price assuming current adjusted net earnings and cash flow generation capability continue.
+
+* **Numerical Calculation**: Weighted average applying industry average P/E (14x) and P/FCF (15x).
+* **Target Price**: **CAD 52.05**
+* **Upside Potential**: **Approximately +14.4%** vs. current price (45.49)
+* **Rationale**: 
+    > "In Q3/25, we generated adjusted net earnings of $1.8 billion or $0.86 per share, and adjusted funds flow of $3.9 billion or $1.88 per share."
+    Such strong cash flow will maximize shareholder return scale when debt targets are achieved (Net Debt below $12B), serving as a catalyst for valuation re-rating.
 
 ### Shareholder Returns & Capital Discipline
 
@@ -103,13 +138,13 @@ While current stock prices reflect one-time costs related to North Sea assets an
 
 ### Downside Protection
 
-Low operating costs of $21 per barrel and abundant liquidity of $4.3 Billion support the downside.
+Low operating costs of $21 per barrel and abundant liquidity of $4.3 Billion support the downside. A P/B ratio of 2.65x may seem high compared to simple manufacturing, but the 'zero decline' characteristic of CNQ's oil sands assets must be considered. Low-cost production from fully depreciated infrastructure holds real value that exceeds simple accounting book value.
 
 ### Upside Potential
 
-Secured additional zero-decline production capacity of 31,000 bbl/d annually through 100% acquisition of Albian mine interest.
+Secured additional zero-decline production capacity of 31,000 bbl/d annually through 100% acquisition of Albian mine interest. Once debt targets are achieved and shareholder return rate increases to 100%, the current strong cash flow generation capability will serve as a catalyst for share price re-rating.
 
-In conclusion, CNQ offers a typical asymmetric investment opportunity where 'heads you win big (Upside), tails you lose limited (Downside Protection)'.
+In conclusion, CNQ offers a typical asymmetric investment opportunity where 'heads you win big (Upside), tails you lose limited (Downside Protection)'. From an asset play perspective, the real value of long-life low-decline assets is not sufficiently reflected in current market prices, which can be interpreted as an investment opportunity.
 
 ---
 
