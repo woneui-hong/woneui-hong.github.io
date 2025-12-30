@@ -26,29 +26,56 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
     // Language changed - fetch new posts data from JSON file
     setLoading(true)
     
-    // In static export, load posts data from JSON files in public folder
-    const jsonPath = `/posts-data/${language}.json`
+    // In static export, load posts metadata from JSON files in public folder
+    // Use new metadata format, fallback to old format for compatibility
+    const metadataPath = `/posts-data/${language}-metadata.json`
+    const oldJsonPath = `/posts-data/${language}.json`
     
-    fetch(jsonPath)
+    fetch(metadataPath)
       .then(res => {
         if (!res.ok) {
-          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
+          throw new Error(`Failed to fetch metadata: ${res.status} ${res.statusText}`)
         }
         return res.json()
       })
       .then(data => {
         if (data && Array.isArray(data)) {
-          setPosts(data)
+          // Convert metadata format to Post format (add empty contentHtml for compatibility)
+          const posts = data.map((item: { slug: string; metadata: any }) => ({
+            slug: item.slug,
+            metadata: item.metadata,
+            content: '',
+            contentHtml: '', // Not needed for list view
+          }))
+          setPosts(posts)
         } else {
-          // If data format is invalid, keep initial posts
-          setPosts(initialPosts)
+          // If data format is invalid, try old format
+          throw new Error('Invalid metadata format')
         }
         setLoading(false)
       })
       .catch(() => {
-        // If fetch fails, keep initial posts
-        setPosts(initialPosts)
-        setLoading(false)
+        // Fallback to old format for backward compatibility
+        fetch(oldJsonPath)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
+            }
+            return res.json()
+          })
+          .then(data => {
+            if (data && Array.isArray(data)) {
+              setPosts(data)
+            } else {
+              setPosts(initialPosts)
+            }
+            setLoading(false)
+          })
+          .catch(() => {
+            // If both fail, keep initial posts
+            setPosts(initialPosts)
+            setLoading(false)
+          })
       })
   }, [language, initialLang, initialPosts])
 

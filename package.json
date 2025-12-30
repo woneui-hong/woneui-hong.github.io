@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/copy-images.js && node scripts/generate-posts-json.js",
+    "prebuild": "node scripts/copy-images.js && node scripts/generate-posts-metadata.js && node scripts/generate-posts-content.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

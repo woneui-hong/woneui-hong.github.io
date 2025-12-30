@@ -27,54 +27,70 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
     // Language changed - fetch new post data from JSON file
     setLoading(true)
     
-    // Fetch all posts for the language and find the matching one
-    const jsonPath = `/posts-data/${language}.json`
+    // Fetch metadata and content separately (new format) or fallback to old format
+    // Use directory structure: content/en/2025/12/post-name.json
+    const slugParts = slug.split('/')
+    const fileName = slugParts[slugParts.length - 1] + '.json'
+    const slugDir = slugParts.slice(0, -1).join('/')
+    const contentPath = slugDir 
+      ? `/posts-data/content/${language}/${slugDir}/${fileName}`
+      : `/posts-data/content/${language}/${fileName}`
+    const metadataPath = `/posts-data/${language}-metadata.json`
+    const oldJsonPath = `/posts-data/${language}.json`
     
-    fetch(jsonPath)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
-        }
-        return res.json()
-      })
-      .then((posts: Post[]) => {
-        // Find the post with matching slug
-        // Debug: Log slug matching process
-        if (process.env.NODE_ENV === 'development') {
-          console.log('[BlogPostContent] Looking for slug:', slug)
-          console.log('[BlogPostContent] Available slugs:', posts.map(p => p.slug))
-        }
+    // Try new format: fetch metadata and content separately
+    Promise.all([
+      fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
+      fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
+    ])
+      .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
+        // Find matching post in metadata
+        const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
         
-        const foundPost = posts.find(p => p.slug === slug)
-        
-        if (foundPost) {
-          // Ensure all required fields are present
+        if (metadataItem && contentData) {
           const postData: Post = {
-            slug: foundPost.slug,
-            metadata: foundPost.metadata || {},
-            content: foundPost.content || '',
-            contentHtml: foundPost.contentHtml || ''
+            slug: metadataItem.slug,
+            metadata: metadataItem.metadata,
+            content: initialPost.content, // Keep original content
+            contentHtml: contentData.contentHtml,
           }
-          
-          if (process.env.NODE_ENV === 'development') {
-            console.log('[BlogPostContent] Found post:', foundPost.slug)
-          }
-          
           setPost(postData)
         } else {
-          // If post not found, keep initial post
-          if (process.env.NODE_ENV === 'development') {
-            console.warn('[BlogPostContent] Post not found for slug:', slug)
-            console.warn('[BlogPostContent] Available slugs:', posts.map(p => p.slug))
-          }
-          setPost(initialPost)
+          throw new Error('Post not found in new format')
         }
         setLoading(false)
       })
       .catch(() => {
-        // If fetch fails, keep initial post
-        setPost(initialPost)
-        setLoading(false)
+        // Fallback to old format: fetch all posts and find matching one
+        fetch(oldJsonPath)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
+            }
+            return res.json()
+          })
+          .then((posts: Post[]) => {
+            const foundPost = posts.find(p => p.slug === slug)
+            
+            if (foundPost) {
+              const postData: Post = {
+                slug: foundPost.slug,
+                metadata: foundPost.metadata || {},
+                content: foundPost.content || '',
+                contentHtml: foundPost.contentHtml || ''
+              }
+              setPost(postData)
+            } else {
+              // If post not found, keep initial post
+              setPost(initialPost)
+            }
+            setLoading(false)
+          })
+          .catch(() => {
+            // If both fail, keep initial post
+            setPost(initialPost)
+            setLoading(false)
+          })
       })
   }, [language, initialLang, initialPost, slug])
 
