@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Post } from '@/lib/posts'
-import { Calendar, Tag, User, Menu, X } from 'lucide-react'
+import { Calendar, Tag, Menu, X } from 'lucide-react'
 import { useLanguage, Language } from '@/contexts/LanguageContext'
 import BlogSidebar from './BlogSidebar'
 
@@ -225,6 +225,13 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                 <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                   {post.metadata.title}
                 </h2>
+                {post.metadata.series && post.metadata.part && (
+                  <div className="mb-2">
+                    <span className="inline-block px-2 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded">
+                      {post.metadata.series} - Part {post.metadata.part}
+                    </span>
+                  </div>
+                )}
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {post.metadata.excerpt}
                 </p>
@@ -234,10 +241,6 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                     <span suppressHydrationWarning>
                       {new Date(post.metadata.date).toISOString().split('T')[0]}
                     </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <User size={14} />
-                    <span>{post.metadata.author}</span>
                   </div>
                 </div>
                 {post.metadata.tags && post.metadata.tags.length > 0 && (
@@ -280,6 +283,13 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                 <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                   {post.metadata.title}
                 </h2>
+                {post.metadata.series && post.metadata.part && (
+                  <div className="mb-2">
+                    <span className="inline-block px-2 py-1 text-xs font-semibold text-gray-600 bg-gray-100 rounded">
+                      {post.metadata.series} - Part {post.metadata.part}
+                    </span>
+                  </div>
+                )}
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {post.metadata.excerpt}
                 </p>
@@ -292,10 +302,6 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                         : new Date(post.metadata.date).toISOString().split('T')[0]
                       }
                     </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <User size={14} />
-                    <span>{post.metadata.author}</span>
                   </div>
                 </div>
                 {post.metadata.tags && post.metadata.tags.length > 0 && (

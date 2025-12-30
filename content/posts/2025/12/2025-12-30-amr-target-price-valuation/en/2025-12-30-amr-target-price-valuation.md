@@ -6,6 +6,8 @@ author: "Won Eui Hong"
 category: "Valuation Analysis"
 tags: ["AMR", "Valuation", "Target-Price", "Capital-Efficiency", "Share-Buyback"]
 excerpt: "This report calculates AMR's target price assuming that current revenue realization prices and margin rates remain constant going forward. Through aggressive share repurchases reducing share count, maintaining the status quo itself leads to mechanical per-share value appreciation."
+series: "AMR 3Q2025"
+part: 4
 ---
 
 ## 0. Introduction: Why 'Status Quo' Equals 'Value Appreciation'

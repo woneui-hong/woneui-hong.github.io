@@ -17,6 +17,8 @@ export interface PostMetadata {
   excerpt: string
   featured?: boolean
   published?: boolean
+  series?: string // Series name (e.g., "AMR 3Q2025")
+  part?: number // Part number in the series
 }
 
 export interface Post {

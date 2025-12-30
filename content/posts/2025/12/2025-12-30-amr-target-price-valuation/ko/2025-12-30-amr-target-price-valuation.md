@@ -6,6 +6,8 @@ author: "Won Eui Hong"
 category: "Valuation Analysis"
 tags: ["AMR", "Valuation", "Target-Price", "Capital-Efficiency", "Share-Buyback"]
 excerpt: "AMR의 현재 매출 실현 가격과 마진율이 향후에도 일정하게 유지된다는 가정하에 목표 주가를 산정한다. 강력한 자사주 매입을 통한 주식 수 감소 전략으로 현상 유지 자체가 주당 가치의 기계적 상승으로 이어진다."
+series: "AMR 3Q2025"
+part: 4
 ---
 
 ## 0. 서론: '현상 유지'가 곧 '가치 상승'인 이유

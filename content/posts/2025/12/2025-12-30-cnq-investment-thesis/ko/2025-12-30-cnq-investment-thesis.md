@@ -6,6 +6,8 @@ author: "Won Eui Hong"
 category: "Investment Analysis"
 tags: ["CNQ", "Oil-Sands", "Energy", "Value-Investing", "Capital-Allocation"]
 excerpt: "CNQ의 투자 핵심은 '장기 지속형 저퇴보 자산'에 기반한 하방 경직성과 효율적 자본 배분을 통한 상방 잠재력의 결합이다. 2025년 3분기 실적은 분기 기준 역대 최대 생산량을 기록하며 비즈니스 모델의 견고함을 증명했다."
+series: "CNQ 3Q2025"
+part: 1
 ---
 
 ## [제1편] 비대칭적 보상 구조: 하방 보호와 상방 잠재력의 결합, 저비용 구조와 압도적 현금 창출력의 비대칭적 기회

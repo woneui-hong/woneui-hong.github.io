@@ -6,6 +6,8 @@ author: "Won Eui Hong"
 category: "Investment Analysis"
 tags: ["CNQ", "Oil-Sands", "Energy", "Valuation", "Operating-Efficiency"]
 excerpt: "While Part 1 covered CNQ's overwhelming production volumes and low-cost structure, Part 2 analyzes how those costs are calculated and the practical impact of recent vertical integration and regulatory environment on enterprise value."
+series: "CNQ 3Q2025"
+part: 2
 ---
 
 ## [Part 2] CNQ Valuation: The Physics of Operations and Behind the Numbers
