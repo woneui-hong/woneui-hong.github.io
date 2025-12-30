@@ -77,7 +77,7 @@ Management justifies this strategy as follows:
 - **Rationale 2:** If generated FCF is invested in share repurchases, book value per share (BPS) will naturally increase by approximately 8~10% within one year.
 - **Rationale 3:** Net cash-based debt-free management serves as a factor that defends or elevates P/B multiples to the 2.0x level during market volatility.
 
-In conclusion, as long as management's capital allocation policy continues, **$245.00 (approximately +20% vs. current price)** is a financially justifiable target even if revenue growth stagnates.
+In conclusion, as long as management's capital allocation policy continues, **$245.00** (approximately +20% vs. current price) is a financially justifiable target even if revenue growth stagnates.
 
 ---
 

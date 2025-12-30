@@ -32,13 +32,13 @@ The (L) and (R) suffixes attached to indicator names in the chart represent **Du
 ### (L) Left (Left Axis): Crude Oil Price Indicators
 
 * Corresponds to **WTI, Brent, and Dubai crude**.
-* Uses the left vertical axis numbers (0~140) as reference, with units in **US dollars per barrel (US$/bbl)**.
+* Uses the left vertical axis numbers (0~140) as reference, with units in **US dollars per barrel** (US$/bbl).
 * Serves as the direct benchmark for CNQ's flagship product, synthetic crude oil (SCO), and light crude prices.
 
 ### (R) Right (Right Axis): Natural Gas Price Indicators
 
 * Corresponds to **natural gas**.
-* Uses the right vertical axis numbers (0~14) as reference, with units typically in **US dollars per MMBtu (US$/MMBtu)**.
+* Uses the right vertical axis numbers (0~14) as reference, with units typically in **US dollars per MMBtu** (US$/MMBtu).
 * Natural gas has lower absolute price levels than crude oil, so using the same axis would obscure subtle volatility. Therefore, a separate right axis is used to ensure visual readability.
 
 ---
@@ -50,17 +50,17 @@ This analysis ranks resource correlations based on their impact on CNQ's profita
 ### 1st: WTI (West Texas Intermediate) - Core Price Benchmark
 
 * **Correlation**: Highest. Serves as the direct benchmark for CNQ's flagship product, synthetic crude oil (SCO), and light crude prices.
-* **Value Chain**: **Upstream (Mining) → Midstream (Refining)**. Produces bitumen through oil sands mining and processes it in upgraders to convert it into SCO of similar quality to WTI. Essentially, a factory-type value chain connecting mines to refineries.
+* **Value Chain**: **Upstream** (Mining) → **Midstream** (Refining). Produces bitumen through oil sands mining and processes it in upgraders to convert it into SCO of similar quality to WTI. Essentially, a factory-type value chain connecting mines to refineries.
 
 ### 2nd: Natural Gas - Revenue Source and Key Cost Factor
 
 * **Correlation**: Very high. CNQ is one of North America's largest natural gas producers with significant revenue contribution.
-* **Value Chain**: **Upstream (Mining) → Marketing (Export and Self-consumption)**. Not only sells directly mined gas to North American markets (AECO, etc.), but also uses it as fuel to heat oil sands. This creates a natural hedge structure where rising gas prices increase revenue, while falling gas prices reduce crude production costs.
+* **Value Chain**: **Upstream** (Mining) → **Marketing** (Export and Self-consumption). Not only sells directly mined gas to North American markets (AECO, etc.), but also uses it as fuel to heat oil sands. This creates a natural hedge structure where rising gas prices increase revenue, while falling gas prices reduce crude production costs.
 
 ### 3rd: Brent - International Asset Benchmark
 
 * **Correlation**: Moderate. Serves as the price benchmark for CNQ's North Sea and African offshore assets.
-* **Value Chain**: **Upstream (Exploration and Drilling)**. Directly drills crude from offshore fields and sells to local markets. Recently, decommissioning and maintenance of aging assets have been underway.
+* **Value Chain**: **Upstream** (Exploration and Drilling). Directly drills crude from offshore fields and sells to local markets. Recently, decommissioning and maintenance of aging assets have been underway.
 
 ### 4th: Dubai - Global Market Indicator
 
@@ -101,7 +101,7 @@ The lower limit of oil prices at which CNQ can maintain margins is at the indust
 
 ### Cash Break-even
 
-* **Operating Break-even**: Oil sands operating costs are **C$21.29 (approximately US$15.5)** per barrel. This suggests that even if oil prices fall extremely low on the chart, the probability of cash flow turning negative is very low.
+* **Operating Break-even**: Oil sands operating costs are **C$21.29** (approximately US$15.5) per barrel. This suggests that even if oil prices fall extremely low on the chart, the probability of cash flow turning negative is very low.
 * **Operating cash flow remains positive even if WTI crashes to the $30 level.**
 
 ### Sustaining Break-even (Including Dividends and Maintenance)

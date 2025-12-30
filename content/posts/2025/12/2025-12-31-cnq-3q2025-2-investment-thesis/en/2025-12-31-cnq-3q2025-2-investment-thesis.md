@@ -31,7 +31,7 @@ Part 2 provides an in-depth analysis of how these figures were calculated and th
 
 ## 1. The Reality of Operating Cost: The Secret Behind $21
 
-The oil sands mining and upgrading cost of **$21.29** mentioned in the business report is based on **Canadian dollars (CAD)**. (Approximately **US$15.46** when converted to U.S. dollars)
+The oil sands mining and upgrading cost of **$21.29** mentioned in the business report is based on **Canadian dollars** (CAD). (Approximately **US$15.46** when converted to U.S. dollars)
 
 ### Calculation Method
 
