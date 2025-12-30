@@ -1,5 +1,5 @@
 ---
-title: "CNQ.TO, 3Q2025"
+title: "CNQ.TO, 3Q2025 (Part 1)"
 date: 2025-12-30
 time: "16:00"
 author: "Won Eui Hong"
@@ -8,7 +8,7 @@ tags: ["CNQ", "Oil-Sands", "Energy", "Value-Investing", "Capital-Allocation"]
 excerpt: "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model."
 ---
 
-## Asymmetric Reward Structure: Combining Downside Protection and Upside Potential, Asymmetric Opportunity from Low-Cost Structure and Overwhelming Cash Generation
+## [Part 1] Asymmetric Reward Structure: Combining Downside Protection and Upside Potential, Asymmetric Opportunity from Low-Cost Structure and Overwhelming Cash Generation
 
 ---
 
@@ -35,6 +35,8 @@ CNQ's investment thesis centers on the combination of downside rigidity based on
 
 > "Operations were strong in Q3/25 as we achieved record quarterly production volumes totaling approximately 1,620 MBOE/d, including records for both liquids and natural gas... reflecting both accretive acquisitions and organic growth."  
 > — *Canadian Natural Resources 2025 Q3 Press Release*
+> 
+> *MBOE/d: Million Barrels of Oil Equivalent per Day*
 
 ---
 
@@ -55,14 +57,14 @@ CNQ's revenue structure is clear. It extracts crude oil at low cost from vast oi
 
 Beyond the surface numbers of financial statements, the physics of the business operating in the field are as follows.
 
-### [Table 1] Key Operational Metrics (2025 Q3)
+### [Table 1] Key Operational Metrics (2025 Q3 Basis)
 
 | Metric | 2025 Q3 Actual | Notes |
 | :--- | :--- | :--- |
 | **Total Production** | 1,620,261 BOE/d | 19% increase YoY (Record) |
 | **Oil Sands Operating Cost** | $21.29/bbl (CAD) | Top-tier cost efficiency in the industry |
-| **Adjusted Funds Flow** | $3.9 Billion | Strong operating cash generation |
-| **Liquidity** | $4.3 Billion | Financial flexibility as of September 30, 2025 |
+| **Adjusted Funds Flow** | $3.9 Billion (CAD) | Strong operating cash generation |
+| **Liquidity** | $4.3 Billion (CAD) | Financial flexibility as of September 30, 2025 |
 
 ---
 
@@ -88,8 +90,8 @@ Profitability and earnings-related metrics are as follows.
 
 | Metric | Value | Calculation Basis and Notes |
 | :--- | :--- | :--- |
-| **P/E Ratio** | **13.2x** | Market cap relative to annualized adjusted net earnings ($7.2B) |
-| **EV/EBITDA** | **7.2x** | Using annualized adjusted funds flow (AFF $15.7B) as proxy |
+| **P/E Ratio** | **13.2x** | Market cap relative to annualized adjusted net earnings ($7.2B CAD) |
+| **EV/EBITDA** | **7.2x** | Using annualized adjusted funds flow (AFF $15.7B CAD) as proxy |
 
 ### [Table 2-3] Cash Flow Metrics (2025 Q3 Basis)
 
@@ -97,14 +99,14 @@ Cash flow and capital allocation-related metrics are as follows.
 
 | Metric | Value | Calculation Basis and Notes |
 | :--- | :--- | :--- |
-| **P/FCF (Price/Free Cash Flow)** | **11.9x** | Based on annualized operating FCF (approximately $8.0B) |
-| **SBC (Stock-Based Compensation)** | **CAD 281.6 M** | Annualized figure based on quarterly expenditure of approximately $70.4M |
+| **P/FCF (Price/Free Cash Flow)** | **11.9x** | Based on annualized operating FCF (approximately $8.0B CAD) |
+| **SBC (Stock-Based Compensation)** | **CAD 281.6 M** | Annualized figure based on quarterly expenditure of approximately $70.4M CAD |
 
 ### The Payback Period
 
 "The time required to recover the investment if the entire company were acquired, assuming current free cash flow (FCF) is maintained"
 
-* **Calculation Basis**: Enterprise Value (EV) $111.92 B / Annual FCF $7.73 B
+* **Calculation Basis**: Enterprise Value (EV) $111.92 B CAD / Annual FCF $7.73 B CAD
 * **Payback Period**: **Approximately 14.5 years**
 * **Analysis**: Considering the capital-intensive nature of the energy sector and asset life of over 25 years, a payback period of less than 15 years suggests that the price relative to cash generation capability is reasonable. In particular, once debt repayment is completed and shareholder return rate increases to 100%, the actual payback speed is expected to accelerate.
 
@@ -114,7 +116,7 @@ This calculates the fair share price assuming current adjusted net earnings and 
 
 * **Numerical Calculation**: Weighted average applying industry average P/E (14x) and P/FCF (15x).
 * **Target Price**: **CAD 52.05**
-* **Upside Potential**: **Approximately +14.4%** vs. current price (45.49)
+* **Upside Potential**: **Approximately +14.4%** vs. current price (CAD 45.49)
 * **Rationale**: 
     > "In Q3/25, we generated adjusted net earnings of $1.8 billion or $0.86 per share, and adjusted funds flow of $3.9 billion or $1.88 per share."
     Such strong cash flow will maximize shareholder return scale when debt targets are achieved (Net Debt below $12B), serving as a catalyst for valuation re-rating.
@@ -122,8 +124,8 @@ This calculates the fair share price assuming current adjusted net earnings and 
 ### Shareholder Returns & Capital Discipline
 
 * **Shareholder Returns**: Achieved 25 consecutive years of dividend growth (CAGR 21%).
-* **Capital Discipline**: Maintained 2025 operating capital budget at approximately $5.9 Billion while expanding asset base.
-* **Cash Flow Allocation**: Returned approximately $1.5 Billion to shareholders through dividends and share buybacks in Q3 2025.
+* **Capital Discipline**: Maintained 2025 operating capital budget at approximately $5.9 Billion CAD while expanding asset base.
+* **Cash Flow Allocation**: Returned approximately $1.5 Billion CAD to shareholders through dividends and share buybacks in Q3 2025.
 
 > "Our business model is robust and sustainable, underpinned by a strong balance sheet that provides flexibility through significant liquidity... highlighting the free cash flow generating capability of our top tier asset base."  
 > — *Canadian Natural Resources 2025 Q3 Press Release*
@@ -138,7 +140,7 @@ Uncertainty regarding environmental disclosure and potential legal liabilities d
 
 ### Asset Value Impairment
 
-Non-cash unrecoverable costs of approximately $0.7 Billion due to increased estimates of future decommissioning costs for North Sea assets.
+Non-cash unrecoverable costs of approximately $0.7 Billion CAD due to increased estimates of future decommissioning costs for North Sea assets.
 
 ### Operational Risk
 
@@ -152,7 +154,7 @@ While current stock prices reflect one-time costs related to North Sea assets an
 
 ### Downside Protection
 
-Low operating costs of $21 per barrel and abundant liquidity of $4.3 Billion support the downside. A P/B ratio of 2.65x may seem high compared to simple manufacturing, but the 'zero decline' characteristic of CNQ's oil sands assets must be considered. Low-cost production from fully depreciated infrastructure holds real value that exceeds simple accounting book value.
+Low operating costs of $21 CAD per barrel and abundant liquidity of $4.3 Billion CAD support the downside. A P/B ratio of 2.65x may seem high compared to simple manufacturing, but the 'zero decline' characteristic of CNQ's oil sands assets must be considered. Low-cost production from fully depreciated infrastructure holds real value that exceeds simple accounting book value.
 
 ### Upside Potential
 

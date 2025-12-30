@@ -1,5 +1,5 @@
 ---
-title: "CNQ.TO, 3Q2025"
+title: "CNQ.TO, 3Q2025 (제1편)"
 date: 2025-12-30
 time: "16:00"
 author: "Won Eui Hong"
@@ -8,7 +8,7 @@ tags: ["CNQ", "Oil-Sands", "Energy", "Value-Investing", "Capital-Allocation"]
 excerpt: "CNQ의 투자 핵심은 '장기 지속형 저퇴보 자산'에 기반한 하방 경직성과 효율적 자본 배분을 통한 상방 잠재력의 결합이다. 2025년 3분기 실적은 분기 기준 역대 최대 생산량을 기록하며 비즈니스 모델의 견고함을 증명했다."
 ---
 
-## 비대칭적 보상 구조: 하방 보호와 상방 잠재력의 결합, 저비용 구조와 압도적 현금 창출력의 비대칭적 기회
+## [제1편] 비대칭적 보상 구조: 하방 보호와 상방 잠재력의 결합, 저비용 구조와 압도적 현금 창출력의 비대칭적 기회
 
 ---
 
@@ -35,6 +35,8 @@ CNQ의 투자 핵심은 **'장기 지속형 저퇴보 자산(Long Life Low Decli
 
 > "Operations were strong in Q3/25 as we achieved record quarterly production volumes totaling approximately 1,620 MBOE/d, including records for both liquids and natural gas... reflecting both accretive acquisitions and organic growth."  
 > — *Canadian Natural Resources 2025 Q3 Press Release*
+> 
+> *MBOE/d: Million Barrels of Oil Equivalent per Day (일일 백만 배럴 상당량)*
 
 ---
 
@@ -61,8 +63,8 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 | :--- | :--- | :--- |
 | **Total Production** | 1,620,261 BOE/d | 전년 대비 19% 증가 (Record) |
 | **Oil Sands Operating Cost** | $21.29/bbl (CAD) | 업계 최상위권 비용 효율성 |
-| **Adjusted Funds Flow** | $3.9 Billion | 강력한 영업 현금 창출력 |
-| **Liquidity** | $4.3 Billion | 2025년 9월 30일 기준 재무적 유연성 |
+| **Adjusted Funds Flow** | $3.9 Billion (CAD) | 강력한 영업 현금 창출력 |
+| **Liquidity** | $4.3 Billion (CAD) | 2025년 9월 30일 기준 재무적 유연성 |
 
 ---
 
@@ -88,8 +90,8 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 
 | 지표 (Metric) | 수치 (Value) | 산출 근거 및 비고 |
 | :--- | :--- | :--- |
-| **PER (주가수익비율)** | **13.2 x** | 연환산 조정 순이익($7.2B) 대비 시총 비중 |
-| **EV/EBITDA** | **7.2 x** | 연환산 조정 자금 흐름(AFF $15.7B)을 proxy로 사용 |
+| **PER (주가수익비율)** | **13.2 x** | 연환산 조정 순이익($7.2B CAD) 대비 시총 비중 |
+| **EV/EBITDA** | **7.2 x** | 연환산 조정 자금 흐름(AFF $15.7B CAD)을 proxy로 사용 |
 
 ### [Table 2-3] Cash Flow 지표 (2025 Q3 기준)
 
@@ -97,14 +99,14 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 
 | 지표 (Metric) | 수치 (Value) | 산출 근거 및 비고 |
 | :--- | :--- | :--- |
-| **P/FCF (주가/잉여현금흐름)** | **11.9 x** | 연환산 운영 FCF(약 $8.0B) 기준 |
-| **SBC (주식기준보상)** | **CAD 281.6 M** | 분기당 약 $70.4M 지출액의 연간 환산치 |
+| **P/FCF (주가/잉여현금흐름)** | **11.9 x** | 연환산 운영 FCF(약 $8.0B CAD) 기준 |
+| **SBC (주식기준보상)** | **CAD 281.6 M** | 분기당 약 $70.4M CAD 지출액의 연간 환산치 |
 
 ### The Payback Period (투자 회수 기간)
 
 "현행 잉여현금흐름(FCF)이 유지된다고 가정할 때, 기업 전체를 인수할 경우 투자금을 회수하는 데 걸리는 시간"
 
-* **산출 근거**: 기업가치(EV) $111.92 B / 연간 FCF $7.73 B
+* **산출 근거**: 기업가치(EV) $111.92 B CAD / 연간 FCF $7.73 B CAD
 * **회수 기간**: **약 14.5년**
 * **분석**: 에너지 업종의 자본 집약적 특성과 25년 이상의 자산 수명을 고려할 때, 15년 미만의 회수 기간은 현금 창출력 대비 가격이 합리적인 수준임을 시사한다. 특히 부채 상환 완료 후 주주 환원율이 100%로 상향될 경우 실질적인 회수 속도는 가속화될 것으로 전망된다.
 
@@ -114,7 +116,7 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 
 * **수치 기반 산출**: 업종 평균 PER(14배) 및 P/FCF(15배)를 적용한 가중 평균값.
 * **적정 주가 (Target Price)**: **CAD 52.05**
-* **상승 잠재력 (Upside)**: 현재가(45.49) 대비 **약 +14.4%**
+* **상승 잠재력 (Upside)**: 현재가(CAD 45.49) 대비 **약 +14.4%**
 * **근거**: 
     > "In Q3/25, we generated adjusted net earnings of $1.8 billion or $0.86 per share, and adjusted funds flow of $3.9 billion or $1.88 per share."
     이와 같은 강력한 현금 흐름은 부채 목표 달성(Net Debt $12B 미만) 시 주주 환원 규모를 극대화하여 밸류에이션 재평가(Re-rating)의 촉매제가 될 것이다.
@@ -122,8 +124,8 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 ### Shareholder Returns & Capital Discipline
 
 * **Shareholder Returns**: 25년 연속 배당 성장(CAGR 21%) 달성.
-* **Capital Discipline**: 2025년 운영 자본 예산을 약 $5.9 Billion으로 유지하며 자산 기반 확대.
-* **Cash Flow Allocation**: 2025년 3분기 기준 약 $1.5 Billion을 배당 및 자사주 매입을 통해 주주에게 환원.
+* **Capital Discipline**: 2025년 운영 자본 예산을 약 $5.9 Billion CAD로 유지하며 자산 기반 확대.
+* **Cash Flow Allocation**: 2025년 3분기 기준 약 $1.5 Billion CAD를 배당 및 자사주 매입을 통해 주주에게 환원.
 
 > "Our business model is robust and sustainable, underpinned by a strong balance sheet that provides flexibility through significant liquidity... highlighting the free cash flow generating capability of our top tier asset base."  
 > — *Canadian Natural Resources 2025 Q3 Press Release*
@@ -138,7 +140,7 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 
 ### 자산 가치 상각
 
-북해 지역 자산의 미래 폐기 비용 추정치 증가로 인한 약 $0.7 Billion의 비현금성 회수 불능 비용 발생.
+북해 지역 자산의 미래 폐기 비용 추정치 증가로 인한 약 $0.7 Billion CAD의 비현금성 회수 불능 비용 발생.
 
 ### 운영 리스크
 
@@ -152,7 +154,7 @@ CNQ의 수익 구조는 명확하다. 광활한 오일샌드 자산에서 저렴
 
 ### Downside Protection
 
-배럴당 $21 수준의 낮은 운영 비용과 $4.3 Billion 규모의 풍부한 유동성이 하방을 지지한다. PBR 2.65배는 단순 제조업 대비 높게 느껴질 수 있으나, CNQ가 보유한 오일샌드 자산의 '제로 감퇴(Zero Decline)' 특성을 고려해야 한다. 감가상각이 완료된 인프라에서 발생하는 저비용 생산물은 단순한 회계적 장부가치를 상회하는 실질적 가치를 지닌다.
+배럴당 $21 CAD 수준의 낮은 운영 비용과 $4.3 Billion CAD 규모의 풍부한 유동성이 하방을 지지한다. PBR 2.65배는 단순 제조업 대비 높게 느껴질 수 있으나, CNQ가 보유한 오일샌드 자산의 '제로 감퇴(Zero Decline)' 특성을 고려해야 한다. 감가상각이 완료된 인프라에서 발생하는 저비용 생산물은 단순한 회계적 장부가치를 상회하는 실질적 가치를 지닌다.
 
 ### Upside Potential
 
