@@ -173,9 +173,24 @@ try {
   console.log('🔄 Git add 실행 중...');
   execSync('git add .', { stdio: 'inherit' });
   
-  console.log(`\n💬 커밋 메시지: ${commitMessage}`);
-  console.log('📝 Git commit 실행 중...');
-  execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+  // 변경사항이 있는지 확인 (--cached는 스테이징된 변경사항 확인)
+  let hasChanges = false;
+  try {
+    execSync('git diff --cached --quiet', { encoding: 'utf-8', stdio: 'ignore' });
+    // exit code 0 = 변경사항 없음
+    hasChanges = false;
+  } catch (statusError) {
+    // exit code 1 = 변경사항 있음
+    hasChanges = true;
+  }
+  
+  if (hasChanges) {
+    console.log(`\n💬 커밋 메시지: ${commitMessage}`);
+    console.log('📝 Git commit 실행 중...');
+    execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+  } else {
+    console.log('\nℹ️  커밋할 변경사항이 없습니다.');
+  }
   
   console.log('\n🚀 Git push 실행 중...');
   execSync('git push origin main', { stdio: 'inherit' });
