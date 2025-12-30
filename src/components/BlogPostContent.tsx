@@ -151,6 +151,13 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
               {post.metadata.category}
             </span>
           </div>
+          {post.metadata.series && post.metadata.part && (
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
+                {post.metadata.series} - Part {post.metadata.part}
+              </span>
+            </div>
+          )}
         </div>
         {post.metadata.tags && post.metadata.tags.length > 0 && (
           <div className="flex flex-wrap gap-2">

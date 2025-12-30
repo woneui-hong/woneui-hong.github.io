@@ -242,6 +242,13 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                       {new Date(post.metadata.date).toISOString().split('T')[0]}
                     </span>
                   </div>
+                  {post.metadata.category && (
+                    <div className="flex items-center gap-1">
+                      <span className="px-2 py-1 bg-gray-200 rounded-full text-xs font-medium">
+                        {post.metadata.category}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 {post.metadata.tags && post.metadata.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-4">
@@ -303,6 +310,13 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
                       }
                     </span>
                   </div>
+                  {post.metadata.category && (
+                    <div className="flex items-center gap-1">
+                      <span className="px-2 py-1 bg-gray-200 rounded-full text-xs font-medium">
+                        {post.metadata.category}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 {post.metadata.tags && post.metadata.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-4">

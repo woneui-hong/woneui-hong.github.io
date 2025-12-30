@@ -8,6 +8,7 @@ tags: ["CNQ", "Oil-Sands", "Energy", "Valuation", "Operating-Efficiency"]
 excerpt: "1편에서 CNQ의 압도적 생산량과 저비용 구조를 다뤘다면, 2편에서는 그 비용이 어떻게 산출되는지, 그리고 최근의 수직계열화와 규제 환경이 기업 가치에 미치는 실질적 영향을 분석한다."
 series: "CNQ 3Q2025"
 part: 2
+quarter: "3Q2025"
 ---
 
 ## [제2편] CNQ 가치 평가: 운영의 물리학과 숫자의 이면

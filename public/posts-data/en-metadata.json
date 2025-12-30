@@ -13,7 +13,9 @@
         "Capital-Allocation",
         "Value-Investing"
       ],
-      "excerpt": "Analysis of AMR's intrinsic value and capital allocation strategy as revealed in the 2025 Q3 10-Q report"
+      "excerpt": "Analysis of AMR's intrinsic value and capital allocation strategy as revealed in the 2025 Q3 10-Q report",
+      "series": "AMR 3Q2025",
+      "part": 1
     }
   },
   {
@@ -24,7 +26,12 @@
       "time": "10:00",
       "author": "Won Eui Hong",
       "category": "Financial Analysis",
-      "excerpt": "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials."
+      "tags": [
+        "AMR"
+      ],
+      "excerpt": "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials.",
+      "series": "AMR 3Q2025",
+      "part": 2
     }
   },
   {
@@ -41,7 +48,9 @@
         "Management-Strategy",
         "Value-Investing"
       ],
-      "excerpt": "AMR's low multiple (P/FCF 6.2x) reflects not simply undervaluation but the market's structural fear. This report analyzes three core risks that investors are concerned about and examines how management is defending against them with specific numbers and strategies."
+      "excerpt": "AMR's low multiple (P/FCF 6.2x) reflects not simply undervaluation but the market's structural fear. This report analyzes three core risks that investors are concerned about and examines how management is defending against them with specific numbers and strategies.",
+      "series": "AMR 3Q2025",
+      "part": 3
     }
   },
   {
@@ -59,13 +68,15 @@
         "Capital-Efficiency",
         "Share-Buyback"
       ],
-      "excerpt": "This report calculates AMR's target price assuming that current revenue realization prices and margin rates remain constant going forward. Through aggressive share repurchases reducing share count, maintaining the status quo itself leads to mechanical per-share value appreciation."
+      "excerpt": "This report calculates AMR's target price assuming that current revenue realization prices and margin rates remain constant going forward. Through aggressive share repurchases reducing share count, maintaining the status quo itself leads to mechanical per-share value appreciation.",
+      "series": "AMR 3Q2025",
+      "part": 4
     }
   },
   {
     "slug": "2025/12/2025-12-30-cnq-investment-thesis",
     "metadata": {
-      "title": "[Investment Thesis] Canadian Natural Resources (CNQ): Asymmetric Opportunity from Low-Cost Structure and Overwhelming Cash Generation",
+      "title": "CNQ.TO, 3Q2025 (Part 1)",
       "date": "2025-12-30T00:00:00.000Z",
       "time": "16:00",
       "author": "Won Eui Hong",
@@ -77,7 +88,29 @@
         "Value-Investing",
         "Capital-Allocation"
       ],
-      "excerpt": "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model."
+      "excerpt": "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model.",
+      "series": "CNQ 3Q2025",
+      "part": 1
+    }
+  },
+  {
+    "slug": "2025/12/2025-12-31-cnq-investment-thesis-part2",
+    "metadata": {
+      "title": "CNQ Valuation Part 2: The Physics of Operations and Behind the Numbers",
+      "date": "2025-12-31T00:00:00.000Z",
+      "time": "17:00",
+      "author": "Won Eui Hong",
+      "category": "Investment Analysis",
+      "tags": [
+        "CNQ",
+        "Oil-Sands",
+        "Energy",
+        "Valuation",
+        "Operating-Efficiency"
+      ],
+      "excerpt": "While Part 1 covered CNQ's overwhelming production volumes and low-cost structure, Part 2 analyzes how those costs are calculated and the practical impact of recent vertical integration and regulatory environment on enterprise value.",
+      "series": "CNQ 3Q2025",
+      "part": 2
     }
   }
 ]

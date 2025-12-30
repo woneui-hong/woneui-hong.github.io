@@ -8,6 +8,7 @@ tags: ["AMR", "Risk-Analysis", "Management-Strategy", "Value-Investing"]
 excerpt: "AMR's low multiple (P/FCF 6.2x) reflects not simply undervaluation but the market's structural fear. This report analyzes three core risks that investors are concerned about and examines how management is defending against them with specific numbers and strategies."
 series: "AMR 3Q2025"
 part: 3
+quarter: "3Q2025"
 ---
 
 ## 0. Overview: Why Does the Market Leave AMR 'Cheap'?

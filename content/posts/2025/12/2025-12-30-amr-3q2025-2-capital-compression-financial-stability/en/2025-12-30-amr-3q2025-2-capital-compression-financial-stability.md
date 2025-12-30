@@ -8,6 +8,7 @@ tags: ["AMR"]
 excerpt: "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials."
 series: "AMR 3Q2025"
 part: 2
+quarter: "3Q2025"
 ---
 
 ## 0. Overview: The Result of Extreme Capital Allocation

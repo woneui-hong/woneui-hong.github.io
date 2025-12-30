@@ -8,6 +8,7 @@ tags: ["AMR", "Risk-Analysis", "Management-Strategy", "Value-Investing"]
 excerpt: "AMR의 낮은 멀티플(P/FCF 6.2x)은 단순한 저평가가 아니라 시장의 구조적 공포를 반영한 결과다. 본 보고서는 투자자들이 우려하는 세 가지 핵심 리스크를 분석하고, 경영진이 이를 어떤 수치와 전략으로 방어하고 있는지 검토한다."
 series: "AMR 3Q2025"
 part: 3
+quarter: "3Q2025"
 ---
 
 ## 0. 개요: 왜 시장은 AMR을 '싸게' 방치하는가?

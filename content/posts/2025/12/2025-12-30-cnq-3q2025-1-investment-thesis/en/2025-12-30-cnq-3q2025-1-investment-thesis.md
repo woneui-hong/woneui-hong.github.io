@@ -8,6 +8,7 @@ tags: ["CNQ", "Oil-Sands", "Energy", "Value-Investing", "Capital-Allocation"]
 excerpt: "CNQ's investment thesis centers on the combination of downside rigidity based on 'long-life low-decline assets' and upside potential through efficient capital allocation. Q3 2025 results recorded record quarterly production volumes, demonstrating the robustness of the business model."
 series: "CNQ 3Q2025"
 part: 1
+quarter: "3Q2025"
 ---
 
 ## [Part 1] Asymmetric Reward Structure: Combining Downside Protection and Upside Potential, Asymmetric Opportunity from Low-Cost Structure and Overwhelming Cash Generation
