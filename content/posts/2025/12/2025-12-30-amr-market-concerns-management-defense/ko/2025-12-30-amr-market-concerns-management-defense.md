@@ -1,6 +1,7 @@
 ---
 title: "AMR: 시장의 우려와 경영진의 방어 논리"
 date: 2025-12-30
+time: "14:00"
 author: "Won Eui Hong"
 category: "Investment Risk Analysis"
 tags: ["AMR", "Risk-Analysis", "Management-Strategy", "Value-Investing"]

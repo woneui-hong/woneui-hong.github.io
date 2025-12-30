@@ -180,9 +180,20 @@ async function getAllPosts(lang = 'en') {
     })
     
     return validPosts.sort((a, b) => {
-      const dateA = new Date(a.metadata.date).getTime()
-      const dateB = new Date(b.metadata.date).getTime()
-      return dateB - dateA
+      // Parse date and time for comparison
+      const dateA = a.metadata.date
+      const timeA = a.metadata.time || '00:00'
+      const dateB = b.metadata.date
+      const timeB = b.metadata.time || '00:00'
+      
+      // Create datetime string for comparison: YYYY-MM-DD HH:mm
+      const datetimeA = `${dateA} ${timeA}`
+      const datetimeB = `${dateB} ${timeB}`
+      
+      // Compare timestamps (newer first)
+      const timestampA = new Date(datetimeA).getTime()
+      const timestampB = new Date(datetimeB).getTime()
+      return timestampB - timestampA
     })
   } catch (error) {
     console.error('Error getting all posts:', error)

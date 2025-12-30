@@ -1,6 +1,7 @@
 ---
 title: "AMR: 자본 압축의 수학적 필연성과 재무적 안정성"
 date: 2025-12-30
+time: "10:00"
 author: "Won Eui Hong"
 category: "Financial Analysis"
 excerpt: "순현금 $453M, 부채 단 $5M. AMR은 발행 주식의 42%를 자사주로 매입하며 자본 압축을 통해 주당 가치를 극대화하고 있다. 2025년 3분기 10-Q 공시 자료를 근거로 한 재무 분석."

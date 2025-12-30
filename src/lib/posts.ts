@@ -10,6 +10,7 @@ const postsDirectory = path.join(process.cwd(), 'content/posts')
 export interface PostMetadata {
   title: string
   date: string
+  time?: string // Optional time in HH:mm format (e.g., "14:30")
   author: string
   category: string
   tags: string[]
@@ -232,9 +233,20 @@ export async function getAllPosts(lang: 'en' | 'ko' = 'en'): Promise<Post[]> {
     })
     
     return validPosts.sort((a, b) => {
-      const dateA = new Date(a.metadata.date).getTime()
-      const dateB = new Date(b.metadata.date).getTime()
-      return dateB - dateA
+      // Parse date and time for comparison
+      const dateA = a.metadata.date
+      const timeA = a.metadata.time || '00:00'
+      const dateB = b.metadata.date
+      const timeB = b.metadata.time || '00:00'
+      
+      // Create datetime string for comparison: YYYY-MM-DD HH:mm
+      const datetimeA = `${dateA} ${timeA}`
+      const datetimeB = `${dateB} ${timeB}`
+      
+      // Compare timestamps (newer first)
+      const timestampA = new Date(datetimeA).getTime()
+      const timestampB = new Date(datetimeB).getTime()
+      return timestampB - timestampA
     })
   } catch (error) {
     return []

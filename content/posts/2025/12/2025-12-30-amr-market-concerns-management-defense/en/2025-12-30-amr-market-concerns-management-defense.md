@@ -1,6 +1,7 @@
 ---
 title: "AMR: Market Concerns and Management's Defense Logic"
 date: 2025-12-30
+time: "14:00"
 author: "Won Eui Hong"
 category: "Investment Risk Analysis"
 tags: ["AMR", "Risk-Analysis", "Management-Strategy", "Value-Investing"]

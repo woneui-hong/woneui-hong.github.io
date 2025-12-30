@@ -1,6 +1,7 @@
 ---
 title: "AMR: The Mathematical Inevitability of Capital Compression and Financial Stability"
 date: 2025-12-30
+time: "10:00"
 author: "Won Eui Hong"
 category: "Financial Analysis"
 excerpt: "Net cash $453M, debt only $5M. AMR is maximizing per-share value through capital compression by repurchasing 42% of shares outstanding. Financial analysis based on 2025 Q3 10-Q disclosure materials."
