@@ -11,6 +11,10 @@ npm install
 npm run dev
 ```
 
+## Analytics Setup
+
+This blog uses Google Analytics 4 to track visitor statistics. See [ANALYTICS_SETUP.md](./ANALYTICS_SETUP.md) for setup instructions.
+
 ## Project Structure
 
 - `src/` - Next.js source code
