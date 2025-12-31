@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 // Google Analytics 측정 ID
@@ -11,23 +11,21 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '' // 또
 
 export default function GoogleAnalytics() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
+  // pathname 변경 시 페이지뷰 추적
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) {
+    if (!GA_MEASUREMENT_ID || typeof window === 'undefined') {
       return
     }
 
-    // 페이지뷰 추적
-    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
-    
     // gtag 함수가 로드되었는지 확인
-    if (typeof window !== 'undefined' && (window as any).gtag) {
+    if ((window as any).gtag) {
+      const url = window.location.pathname + window.location.search
       ;(window as any).gtag('config', GA_MEASUREMENT_ID, {
         page_path: url,
       })
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
   // GA_MEASUREMENT_ID가 없으면 아무것도 렌더링하지 않음
   if (!GA_MEASUREMENT_ID) {
