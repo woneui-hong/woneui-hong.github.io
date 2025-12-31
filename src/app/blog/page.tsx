@@ -43,7 +43,7 @@ export default async function BlogPage({
           <PostsList initialPosts={posts} initialLang={lang} />
         </div>
       </div>
-      <Footer />
+      <Footer initialLang={lang} />
     </main>
   )
 }

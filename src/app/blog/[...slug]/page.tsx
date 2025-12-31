@@ -64,7 +64,7 @@ export default async function BlogPostPage({
           <BlogPostContent slug={slugString} initialPost={post} initialLang={lang} />
         </div>
       </article>
-      <Footer />
+      <Footer initialLang={lang} />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 ---
-title: "Operational Efficiency and Vertical Integration"
+title: "CNQ 3Q2025 Part 2: Operational Efficiency and Vertical Integration"
 date: 2025-12-31
-time: "17:00"
+time: "10:00"
 author: "Won Eui Hong"
 category: "Investment Analysis"
 tags: ["CNQ", "Oil-Sands", "Energy", "Valuation", "Operating-Efficiency"]
@@ -11,7 +11,7 @@ part: 2
 quarter: "3Q2025"
 ---
 
-## [Part 2] CNQ Valuation: The Physics of Operations and Behind the Numbers
+## CNQ Valuation: The Physics of Operations and Behind the Numbers
 
 ---
 
@@ -41,9 +41,9 @@ This is the cash cost per barrel, including the entire process from mining to up
 
 | Component | Description | Notes |
 | :--- | :--- | :--- |
-| **Mining Cost** | Bitumen extraction cost | Oil sands mining and extraction process |
-| **Upgrading Cost** | Synthetic crude oil (SCO) refining cost | Conversion of bitumen to light crude oil |
-| **Energy Cost** | Upgrading process energy cost | Utilization of company-owned natural gas |
+| **1. Mining Cost** | Bitumen extraction cost | Oil sands mining and extraction process |
+| **2. Upgrading Cost** | Synthetic crude oil (SCO) refining cost | Conversion of bitumen to light crude oil |
+| **3. Energy Cost** | Upgrading process energy cost | Utilization of company-owned natural gas |
 | **Total Operating Cost** | **$21.29/bbl (CAD)** | Cash cost per barrel |
 
 ### Basis for Low Cost
@@ -104,7 +104,7 @@ As a result, through vertical integration, CNQ has built a 'low breakeven point'
 
 ## 4. Numerical Calculation Basis for Target Price CAD 53.08
 
-This is not a simple estimate but a calculation formula based on 2025 expected performance scenarios.
+This is a calculation formula based on 2025 expected performance scenarios.
 
 ### [Table 4] Target Price Calculation Basis
 
@@ -182,7 +182,7 @@ CNQ has built a 'low breakeven point' that can survive even during oil price dow
 
 The 'asymmetric reward structure' discussed in Part 1 is supported by the operational efficiency and vertical integration analyzed in Part 2. The low-cost structure ($21.29/bbl) and high utilization (104%) provide downside protection, while margin internalization through vertical integration expands upside potential.
 
-In conclusion, CNQ offers an investment opportunity where the physics of operations can be understood and proven numerically.
+CNQ offers an investment opportunity where the physics of operations can be understood and proven numerically.
 
 ---
 
@@ -196,3 +196,11 @@ In conclusion, CNQ offers an investment opportunity where the physics of operati
 - Market Price Data (2025-12-31)
 - Canadian Competition Act (Bill C-59) Related Materials
 
+---
+
+## CNQ 3Q2025 Series
+
+- [Part 1: Asymmetric Reward Structure](/blog/2025/12/2025-12-30-cnq-3q2025-1-investment-thesis)
+- [Part 2: Operational Efficiency and Vertical Integration](/blog/2025/12/2025-12-31-cnq-3q2025-2-investment-thesis) (Current)
+- [Part 3: The Physics of Break-even: CNQ's Oil Price Floor](/blog/2025/12/2025-12-31-cnq-3q2025-3-oil-price-break-even-analysis)
+- [Part 4: The Threshold of Shareholder Returns](/blog/2025/12/2025-12-31-cnq-3q2025-4-shareholder-return-threshold)

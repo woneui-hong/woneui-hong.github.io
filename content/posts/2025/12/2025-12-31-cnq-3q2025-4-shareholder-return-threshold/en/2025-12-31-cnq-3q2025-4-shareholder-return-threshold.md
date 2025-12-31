@@ -1,5 +1,5 @@
 ---
-title: "The Threshold of Shareholder Returns: The Reality Behind 'Upside is Open'"
+title: "CNQ 3Q2025 Part 4: The Threshold of Shareholder Returns: The Reality Behind 'Upside is Open'"
 date: 2025-12-31
 time: "15:52"
 author: "Won Eui Hong"
@@ -11,13 +11,13 @@ part: 4
 quarter: "3Q2025"
 ---
 
-## [Part 4] CNQ Valuation: The Reality Behind 'Upside is Open' - The Threshold of Shareholder Returns
+## CNQ Valuation: The Reality Behind 'Upside is Open' - The Threshold of Shareholder Returns
 
 ---
 
 ## 1. Overview: Beyond Simple Growth - 'A Waterfall of Cash'
 
-Many investors only expect profits when oil prices rise. However, CNQ's true 'upside' explodes when external variables like oil price increases meet internal variables like **changes in return policies due to debt reduction**. This analysis examines where that threshold lies through business report figures.
+CNQ investment should not only expect profits when oil prices rise, but also examine the combination of external variables like oil price increases and **internal variables like changes in return policies due to debt reduction**.
 
 ---
 
@@ -132,3 +132,11 @@ Ultimately, even if oil prices merely maintain current levels, the era of '100% 
 - CNQ Investor Relations Earnings Materials
 - Market Price Data (2025-12-31)
 
+---
+
+## CNQ 3Q2025 Series
+
+- [Part 1: Asymmetric Reward Structure](/blog/2025/12/2025-12-30-cnq-3q2025-1-investment-thesis)
+- [Part 2: Operational Efficiency and Vertical Integration](/blog/2025/12/2025-12-31-cnq-3q2025-2-investment-thesis)
+- [Part 3: The Physics of Break-even: CNQ's Oil Price Floor](/blog/2025/12/2025-12-31-cnq-3q2025-3-oil-price-break-even-analysis)
+- [Part 4: The Threshold of Shareholder Returns](/blog/2025/12/2025-12-31-cnq-3q2025-4-shareholder-return-threshold) (Current)

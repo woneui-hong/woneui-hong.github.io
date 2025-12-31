@@ -35,7 +35,7 @@ export default async function Home({
           <PostsList initialPosts={posts} initialLang={lang} />
         </div>
       </div>
-      <Footer />
+      <Footer initialLang={lang} />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 ---
-title: "The Physics of Break-even: CNQ's Oil Price Floor"
+title: "CNQ 3Q2025 Part 3: The Physics of Break-even: CNQ's Oil Price Floor"
 date: 2025-12-31
-time: "18:00"
+time: "11:00"
 author: "Won Eui Hong"
 category: "Investment Analysis"
 tags: ["CNQ", "Oil-Sands", "Energy", "Valuation", "Break-Even-Analysis", "Oil-Price-Cycle"]
@@ -11,13 +11,15 @@ part: 3
 quarter: "3Q2025"
 ---
 
-## [Part 3] CNQ Valuation: The Physics of Oil Price Cycles and an 'Unbreakable' Business Model
+## CNQ Valuation: The Physics of Oil Price Cycles and an 'Unbreakable' Business Model
 
 ---
 
 ## 1. Overview: The Hidden Principles of Margins in Charts
 
-The most critical question for CNQ investment is "How low can oil prices fall before this company stops making money?" The essence of energy sector investing lies in the combination of downside protection and upside potential. This analysis examines CNQ's business stability and resilience to commodity price declines through [INDEXergo](https://indexergo.com/series/?frq=D&codeId=241)'s energy price charts.
+The most critical question for CNQ investment is "How low can oil prices fall before this company stops making money?" The essence of energy sector investing lies in the combination of downside protection and upside potential.
+
+This analysis examines CNQ's business stability and resilience to commodity price declines through [INDEXergo](https://indexergo.com/series/?frq=D&codeId=241)'s energy price charts.
 
 ![Historical Energy Price Trends from 1983 to 2025 (WTI, Brent, Dubai Crude, Natural Gas)](../res/images/fig1.png)
 
@@ -25,13 +27,13 @@ The most critical question for CNQ investment is "How low can oil prices fall be
 
 ---
 
-## 2. Chart Element Interpretation: Dual Axis (L) and (R)
+## 2. Chart Element Interpretation
 
-The (L) and (R) suffixes attached to indicator names in the chart represent **Dual Axis**, a mechanism to express assets with different units in a single graph.
+The (L) and (R) suffixes attached to indicator names in the chart represent **Dual Axis**, a mechanism to express assets with different units in a single graph. Crude oil prices are read on the L-axis, and natural gas prices are read on the R-axis.
 
 ### (L) Left (Left Axis): Crude Oil Price Indicators
 
-* Corresponds to **WTI, Brent, and Dubai crude**.
+* **WTI, Brent, and Dubai crude**.
 * Uses the left vertical axis numbers (0~140) as reference, with units in **US dollars per barrel** (US$/bbl).
 * Serves as the direct benchmark for CNQ's flagship product, synthetic crude oil (SCO), and light crude prices.
 
@@ -39,7 +41,6 @@ The (L) and (R) suffixes attached to indicator names in the chart represent **Du
 
 * Corresponds to **natural gas**.
 * Uses the right vertical axis numbers (0~14) as reference, with units typically in **US dollars per MMBtu** (US$/MMBtu).
-* Natural gas has lower absolute price levels than crude oil, so using the same axis would obscure subtle volatility. Therefore, a separate right axis is used to ensure visual readability.
 
 ---
 
@@ -50,7 +51,7 @@ This analysis ranks resource correlations based on their impact on CNQ's profita
 ### 1st: WTI (West Texas Intermediate) - Core Price Benchmark
 
 * **Correlation**: Highest. Serves as the direct benchmark for CNQ's flagship product, synthetic crude oil (SCO), and light crude prices.
-* **Value Chain**: **Upstream** (Mining) → **Midstream** (Refining). Produces bitumen through oil sands mining and processes it in upgraders to convert it into SCO of similar quality to WTI. Essentially, a factory-type value chain connecting mines to refineries.
+* **Value Chain**: **Upstream** (Mining) → **Midstream** (Refining). Produces bitumen through oil sands mining and processes it in upgraders to convert it into SCO of similar quality to WTI. Essentially, a factory-type (vertically integrated) value chain connecting mines to refineries.
 
 ### 2nd: Natural Gas - Revenue Source and Key Cost Factor
 
@@ -102,7 +103,7 @@ The lower limit of oil prices at which CNQ can maintain margins is at the indust
 ### Cash Break-even
 
 * **Operating Break-even**: Oil sands operating costs are **C$21.29** (approximately US$15.5) per barrel. This suggests that even if oil prices fall extremely low on the chart, the probability of cash flow turning negative is very low.
-* **Operating cash flow remains positive even if WTI crashes to the $30 level.**
+* **Operating cash flow remains positive even if WTI crashes to the $30 level (Current price as of 2025.12.31: $57.93)**
 
 ### Sustaining Break-even (Including Dividends and Maintenance)
 
@@ -125,8 +126,6 @@ When the (L) axis indicators on the chart fluctuate, the market feels fear, but 
 
 During oil price upswings, it rewards shareholders with 25 consecutive years of dividend growth. During downturns, it endures using strong cost control and internalized value chains as shields. Ultimately, the reason CNQ remains attractive despite oil price chart volatility lies in its overwhelming **asymmetric structure**: 'earning more when prices rise, and enduring much longer than competitors when prices fall'.
 
-CNQ is not a company that rides cycles, but an **asymmetric winner** that uses cycles to build scale.
-
 ---
 
 ## References
@@ -139,3 +138,11 @@ CNQ is not a company that rides cycles, but an **asymmetric winner** that uses c
 - CNQ Investor Relations Earnings Materials
 - Market Price Data (2025-12-31)
 
+---
+
+## CNQ 3Q2025 Series
+
+- [Part 1: Asymmetric Reward Structure](/blog/2025/12/2025-12-30-cnq-3q2025-1-investment-thesis)
+- [Part 2: Operational Efficiency and Vertical Integration](/blog/2025/12/2025-12-31-cnq-3q2025-2-investment-thesis)
+- [Part 3: The Physics of Break-even: CNQ's Oil Price Floor](/blog/2025/12/2025-12-31-cnq-3q2025-3-oil-price-break-even-analysis) (Current)
+- [Part 4: The Threshold of Shareholder Returns](/blog/2025/12/2025-12-31-cnq-3q2025-4-shareholder-return-threshold)

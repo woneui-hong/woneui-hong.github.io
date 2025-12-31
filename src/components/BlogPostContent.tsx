@@ -13,11 +13,37 @@ interface BlogPostContentProps {
 }
 
 export default function BlogPostContent({ slug, initialPost, initialLang }: BlogPostContentProps) {
-  const { language } = useLanguage()
+  // Use initialLang as the source of truth to prevent hydration mismatch
+  // Only update from useLanguage() after mount (client-side only)
+  const [isMounted, setIsMounted] = useState(false)
   const [post, setPost] = useState<Post | null>(initialPost)
   const [loading, setLoading] = useState(false)
+  // Use initialLang for href to prevent hydration mismatch
+  // This ensures server and client render the same href initially
+  const [currentLang, setCurrentLang] = useState<'en' | 'ko'>(initialLang)
+  
+  // Always call useLanguage() (React hooks rule), but use initialLang initially
+  const languageContext = useLanguage()
+  const language = isMounted ? (languageContext?.language || initialLang) : initialLang
+  
+  // Mark as mounted after first render (client-side only)
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  
+  // Update currentLang when language changes (client-side only, after mount)
+  useEffect(() => {
+    if (isMounted && languageContext && languageContext.language !== currentLang) {
+      setCurrentLang(languageContext.language)
+    }
+  }, [languageContext, isMounted, currentLang])
 
   useEffect(() => {
+    // Only run after mount to prevent hydration issues
+    if (!isMounted) {
+      return
+    }
+    
     // If language matches initial language, use initial post (no fetch needed)
     if (language === initialLang) {
       setPost(initialPost)
@@ -27,57 +53,93 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
     // Language changed - fetch new post data from JSON file
     setLoading(true)
     
-    // Fetch metadata and content separately (new format) or fallback to old format
-    // Use directory structure: content/en/2025/12/post-name.json
-    const slugParts = slug.split('/')
-    const fileName = slugParts[slugParts.length - 1] + '.json'
-    const slugDir = slugParts.slice(0, -1).join('/')
-    const contentPath = slugDir 
-      ? `/posts-data/content/${language}/${slugDir}/${fileName}`
-      : `/posts-data/content/${language}/${fileName}`
-    const metadataPath = `/posts-data/${language}-metadata.json`
+    // Try old format first (en.json, ko.json) since it's more reliable and always available
     const oldJsonPath = `/posts-data/${language}.json`
     
-    // Try new format: fetch metadata and content separately
-    Promise.all([
-      fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
-      fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
-    ])
-      .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
-        // Find matching post in metadata
-        const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
+    fetch(oldJsonPath)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
+        }
+        return res.json()
+      })
+      .then((posts: Post[]) => {
+        const foundPost = posts.find(p => p.slug === slug)
         
-        if (metadataItem && contentData) {
+        if (foundPost) {
           const postData: Post = {
-            slug: metadataItem.slug,
-            metadata: metadataItem.metadata,
-            content: initialPost.content, // Keep original content
-            contentHtml: contentData.contentHtml,
+            slug: foundPost.slug,
+            metadata: foundPost.metadata || {},
+            content: foundPost.content || '',
+            contentHtml: foundPost.contentHtml || ''
           }
           setPost(postData)
+          setLoading(false)
         } else {
-          throw new Error('Post not found in new format')
+          // If not found in old format, try new format as fallback
+          const slugParts = slug.split('/')
+          const fileName = slugParts[slugParts.length - 1] + '.json'
+          const slugDir = slugParts.slice(0, -1).join('/')
+          const contentPath = slugDir 
+            ? `/posts-data/content/${language}/${slugDir}/${fileName}`
+            : `/posts-data/content/${language}/${fileName}`
+          const metadataPath = `/posts-data/${language}-metadata.json`
+          
+          // Try new format: fetch metadata and content separately
+          Promise.all([
+            fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
+            fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
+          ])
+            .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
+              // Find matching post in metadata
+              const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
+              
+              if (metadataItem && contentData) {
+                const postData: Post = {
+                  slug: metadataItem.slug,
+                  metadata: metadataItem.metadata,
+                  content: initialPost.content, // Keep original content
+                  contentHtml: contentData.contentHtml,
+                }
+                setPost(postData)
+              } else {
+                // If post not found, keep initial post
+                setPost(initialPost)
+              }
+              setLoading(false)
+            })
+            .catch(() => {
+              // If both fail, keep initial post
+              setPost(initialPost)
+              setLoading(false)
+            })
         }
-        setLoading(false)
       })
       .catch(() => {
-        // Fallback to old format: fetch all posts and find matching one
-        fetch(oldJsonPath)
-          .then(res => {
-            if (!res.ok) {
-              throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
-            }
-            return res.json()
-          })
-          .then((posts: Post[]) => {
-            const foundPost = posts.find(p => p.slug === slug)
+        // If old format fails, try new format as fallback
+        const slugParts = slug.split('/')
+        const fileName = slugParts[slugParts.length - 1] + '.json'
+        const slugDir = slugParts.slice(0, -1).join('/')
+        const contentPath = slugDir 
+          ? `/posts-data/content/${language}/${slugDir}/${fileName}`
+          : `/posts-data/content/${language}/${fileName}`
+        const metadataPath = `/posts-data/${language}-metadata.json`
+        
+        // Try new format: fetch metadata and content separately
+        Promise.all([
+          fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
+          fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
+        ])
+          .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
+            // Find matching post in metadata
+            const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
             
-            if (foundPost) {
+            if (metadataItem && contentData) {
               const postData: Post = {
-                slug: foundPost.slug,
-                metadata: foundPost.metadata || {},
-                content: foundPost.content || '',
-                contentHtml: foundPost.contentHtml || ''
+                slug: metadataItem.slug,
+                metadata: metadataItem.metadata,
+                content: initialPost.content, // Keep original content
+                contentHtml: contentData.contentHtml,
               }
               setPost(postData)
             } else {
@@ -92,7 +154,7 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             setLoading(false)
           })
       })
-  }, [language, initialLang, initialPost, slug])
+  }, [language, initialLang, initialPost, slug, isMounted])
 
   if (loading) {
     return (
@@ -114,11 +176,13 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
     <>
       {/* Back Button */}
       <Link
-        href={`/blog${language === 'ko' ? '?lang=ko' : ''}`}
+        href={`/blog${currentLang === 'ko' ? '?lang=ko' : ''}`}
         className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors mb-8"
       >
         <ArrowLeft size={18} />
-        <span>Back to Blog</span>
+        <span suppressHydrationWarning>
+          {currentLang === 'ko' ? '블로그로 돌아가기' : 'Back to Blog'}
+        </span>
       </Link>
 
       {/* Post Header */}
@@ -177,7 +241,7 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
       {/* Post Content */}
       {post.contentHtml && post.contentHtml.trim() ? (
         <div
-          key={`${post.slug}-${language}`}
+          key={`${post.slug}-${currentLang}`}
           className="prose prose-lg max-w-none
             prose-headings:text-gray-900 prose-headings:font-bold
             prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4
