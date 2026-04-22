@@ -2,11 +2,7 @@
 
 import { useMemo } from 'react'
 
-interface FooterProps {
-  initialLang?: 'en' | 'ko'
-}
-
-export default function Footer({ initialLang: _initialLang = 'en' }: FooterProps) {
+export default function Footer() {
   const currentYear = useMemo(() => new Date().getFullYear(), [])
 
   return (
@@ -22,4 +18,3 @@ export default function Footer({ initialLang: _initialLang = 'en' }: FooterProps
     </footer>
   )
 }
-

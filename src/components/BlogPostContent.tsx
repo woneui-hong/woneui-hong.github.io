@@ -39,120 +39,42 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
   }, [languageContext, isMounted, currentLang])
 
   useEffect(() => {
-    // Only run after mount to prevent hydration issues
     if (!isMounted) {
       return
     }
-    
-    // If language matches initial language, use initial post (no fetch needed)
+
     if (language === initialLang) {
       setPost(initialPost)
       return
     }
 
-    // Language changed - fetch new post data from JSON file
     setLoading(true)
-    
-    // Try old format first (en.json, ko.json) since it's more reliable and always available
-    const oldJsonPath = `/posts-data/${language}.json`
-    
-    fetch(oldJsonPath)
-      .then(res => {
+    const postsUrl = `/posts-data/${language}.json`
+
+    fetch(postsUrl)
+      .then((res) => {
         if (!res.ok) {
-          throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`)
+          throw new Error(`Failed to fetch: ${res.status}`)
         }
         return res.json()
       })
       .then((posts: Post[]) => {
-        const foundPost = posts.find(p => p.slug === slug)
-        
-        if (foundPost) {
-          const postData: Post = {
-            slug: foundPost.slug,
-            metadata: foundPost.metadata || {},
-            content: foundPost.content || '',
-            contentHtml: foundPost.contentHtml || ''
-          }
-          setPost(postData)
-          setLoading(false)
+        const found = posts.find((p) => p.slug === slug)
+        if (found) {
+          setPost({
+            slug: found.slug,
+            metadata: found.metadata,
+            content: found.content || '',
+            contentHtml: found.contentHtml || '',
+          })
         } else {
-          // If not found in old format, try new format as fallback
-          const slugParts = slug.split('/')
-          const fileName = slugParts[slugParts.length - 1] + '.json'
-          const slugDir = slugParts.slice(0, -1).join('/')
-          const contentPath = slugDir 
-            ? `/posts-data/content/${language}/${slugDir}/${fileName}`
-            : `/posts-data/content/${language}/${fileName}`
-          const metadataPath = `/posts-data/${language}-metadata.json`
-          
-          // Try new format: fetch metadata and content separately
-          Promise.all([
-            fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
-            fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
-          ])
-            .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
-              // Find matching post in metadata
-              const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
-              
-              if (metadataItem && contentData) {
-                const postData: Post = {
-                  slug: metadataItem.slug,
-                  metadata: metadataItem.metadata,
-                  content: initialPost.content, // Keep original content
-                  contentHtml: contentData.contentHtml,
-                }
-                setPost(postData)
-              } else {
-                // If post not found, keep initial post
-                setPost(initialPost)
-              }
-              setLoading(false)
-            })
-            .catch(() => {
-              // If both fail, keep initial post
-              setPost(initialPost)
-              setLoading(false)
-            })
+          setPost(initialPost)
         }
+        setLoading(false)
       })
       .catch(() => {
-        // If old format fails, try new format as fallback
-        const slugParts = slug.split('/')
-        const fileName = slugParts[slugParts.length - 1] + '.json'
-        const slugDir = slugParts.slice(0, -1).join('/')
-        const contentPath = slugDir 
-          ? `/posts-data/content/${language}/${slugDir}/${fileName}`
-          : `/posts-data/content/${language}/${fileName}`
-        const metadataPath = `/posts-data/${language}-metadata.json`
-        
-        // Try new format: fetch metadata and content separately
-        Promise.all([
-          fetch(metadataPath).then(res => res.ok ? res.json() : Promise.reject()),
-          fetch(contentPath).then(res => res.ok ? res.json() : Promise.reject())
-        ])
-          .then(([metadataArray, contentData]: [Array<{ slug: string; metadata: any }>, { slug: string; contentHtml: string }]) => {
-            // Find matching post in metadata
-            const metadataItem = metadataArray.find((item: { slug: string }) => item.slug === slug)
-            
-            if (metadataItem && contentData) {
-              const postData: Post = {
-                slug: metadataItem.slug,
-                metadata: metadataItem.metadata,
-                content: initialPost.content, // Keep original content
-                contentHtml: contentData.contentHtml,
-              }
-              setPost(postData)
-            } else {
-              // If post not found, keep initial post
-              setPost(initialPost)
-            }
-            setLoading(false)
-          })
-          .catch(() => {
-            // If both fail, keep initial post
-            setPost(initialPost)
-            setLoading(false)
-          })
+        setPost(initialPost)
+        setLoading(false)
       })
   }, [language, initialLang, initialPost, slug, isMounted])
 

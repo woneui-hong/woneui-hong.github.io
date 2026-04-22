@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { Post } from '@/lib/posts'
 import { Calendar, Tag, TrendingUp, X } from 'lucide-react'
-import { Language } from '@/contexts/LanguageContext'
+import type { Language } from '@/lib/lang'
 
 interface BlogSidebarProps {
   posts: Post[]

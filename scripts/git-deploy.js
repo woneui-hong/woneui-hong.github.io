@@ -72,9 +72,11 @@ function generateCommitMessage() {
         changes.styles.push(filePath.split('/').pop());
       }
       // 설정 파일 변경
-      else if (filePath.includes('package.json') || 
+      else if (filePath.startsWith('config/') ||
+               filePath.includes('package.json') || 
                filePath.includes('next.config') || 
-               filePath.includes('tsconfig.json')) {
+               filePath.includes('tsconfig.json') ||
+               filePath.includes('config/eslint.json')) {
         changes.config.push(filePath.split('/').pop());
       }
       // 스크립트 변경

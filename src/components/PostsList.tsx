@@ -4,7 +4,8 @@ import { useEffect, useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Post } from '@/lib/posts'
 import { Calendar, Tag, Menu, X } from 'lucide-react'
-import { useLanguage, Language } from '@/contexts/LanguageContext'
+import { useLanguage } from '@/contexts/LanguageContext'
+import type { Language } from '@/lib/lang'
 import BlogSidebar from './BlogSidebar'
 
 interface PostsListProps {
@@ -154,10 +155,10 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
   // Ensure client-side only rendering for filter options to avoid hydration mismatch
   useEffect(() => {
     setIsClient(true)
-    // Sync language state with context after hydration
     if (languageContext.language !== language) {
       setLanguage(languageContext.language)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only hydration sync
   }, [])
 
   // Sync language from context
@@ -165,6 +166,7 @@ export default function PostsList({ initialPosts, initialLang }: PostsListProps)
     if (isClient && languageContext.language !== language) {
       setLanguage(languageContext.language)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- avoid feedback loop with local language state
   }, [languageContext.language, isClient])
 
   useEffect(() => {

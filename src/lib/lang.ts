@@ -32,23 +32,3 @@ export async function getLanguageFromServer(
   // In static export, both will be undefined, so it returns defaultLang
   return langParam || langCookie || defaultLang
 }
-
-/**
- * Get language from URL and cookies (client component)
- * Priority: URL > cookie > default ('en')
- */
-export function getLanguageFromClient(defaultLang: Language = 'en'): Language {
-  if (typeof window === 'undefined') {
-    return defaultLang
-  }
-  
-  const langFromUrl = new URLSearchParams(window.location.search).get('lang') as Language | null
-  const langFromCookie = document.cookie
-    .split('; ')
-    .find((row) => row.startsWith('lang='))
-    ?.split('=')[1] as Language | undefined
-  
-  return langFromUrl || langFromCookie || defaultLang
-}
-
-

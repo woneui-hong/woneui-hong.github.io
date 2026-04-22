@@ -2,8 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, Suspense } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-
-export type Language = 'en' | 'ko'
+import type { Language } from '@/lib/lang'
 
 interface LanguageContextType {
   language: Language
@@ -51,6 +50,7 @@ function LanguageProviderInner({ children }: { children: React.ReactNode }) {
     if (!langFromCookie && langFromUrl) {
       document.cookie = `lang=${langFromUrl}; path=/; max-age=31536000`
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- isInitialized set inside; adding it would retrigger incorrectly
   }, [searchParams])
 
   // Listen for popstate events (back/forward navigation) and URL changes
