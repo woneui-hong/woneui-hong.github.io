@@ -5,7 +5,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   title: 'Won Eui Hong',
-  description: 'Business, Investment, and the art of automation',
+  description: 'Blog',
 }
 
 export default function RootLayout({

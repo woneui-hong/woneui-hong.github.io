@@ -5,13 +5,17 @@ import Footer from '@/components/Footer'
 import BlogPostContent from '@/components/BlogPostContent'
 import { getLanguageFromServer } from '@/lib/lang'
 
+/** Reserved slug so `output: "export"` can build when there are zero posts (catch-all must emit at least one path). */
+const EMPTY_BLOG_PLACEHOLDER = '__empty__'
+
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs()
-  const params = slugs.map((slug) => ({
-    slug: slug.split('/'), // Convert slug string to array for [...slug]
+  if (slugs.length === 0) {
+    return [{ slug: [EMPTY_BLOG_PLACEHOLDER] }]
+  }
+  return slugs.map((slug) => ({
+    slug: slug.split('/'),
   }))
-  
-  return params
 }
 
 export async function generateMetadata({ 
@@ -43,6 +47,10 @@ export default async function BlogPostPage({
   searchParams?: { lang?: string }
 }) {
   const slugString = Array.isArray(params.slug) ? params.slug.join('/') : params.slug
+
+  if (slugString === EMPTY_BLOG_PLACEHOLDER) {
+    notFound()
+  }
   
   // In production (static export), use default 'en'
   // In development (localhost), use searchParams for language switching

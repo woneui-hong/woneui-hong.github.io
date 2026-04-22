@@ -6,7 +6,7 @@ import { getLanguageFromServer } from '@/lib/lang'
 
 export const metadata = {
   title: 'Blog - Won Eui Hong',
-  description: 'Won Eui Hong\'s Blog',
+  description: 'Blog',
 }
 
 // Force static generation only for production builds (static export)
