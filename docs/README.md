@@ -27,6 +27,10 @@ npm install
 npm run dev
 ```
 
+개발 서버는 **http://localhost:3007** 에서 실행됩니다.
+
+**관리자(글 작성 UI):** [docs/ADMIN.md](./ADMIN.md) — `.env.local`에 `ADMIN_PASSWORD` 설정 후 `/admin` 접속.
+
 프로덕션과 동일하게 보려면 `npm run build` 후 `npx serve out` (또는 `npm start`는 `next start`용).
 
 ## 포스팅

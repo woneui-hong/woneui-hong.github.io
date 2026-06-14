@@ -9,3 +9,5 @@ Next.js 기반 GitHub Pages 블로그입니다.
 ```bash
 npm install && npm run dev
 ```
+
+Dev server: **http://localhost:3007** · Admin: **http://localhost:3007/admin** (see [docs/ADMIN.md](docs/ADMIN.md))

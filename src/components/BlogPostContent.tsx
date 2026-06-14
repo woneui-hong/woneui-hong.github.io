@@ -164,7 +164,7 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
       {post.contentHtml && post.contentHtml.trim() ? (
         <div
           key={`${post.slug}-${currentLang}`}
-          className="prose prose-lg max-w-none
+          className="prose prose-lg max-w-none post-content
             prose-headings:text-gray-900 prose-headings:font-bold
             prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4
             prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
@@ -177,7 +177,9 @@ export default function BlogPostContent({ slug, initialPost, initialLang }: Blog
             prose-a:text-primary prose-a:no-underline hover:prose-a:underline
             prose-code:text-primary prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
             prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic
-            prose-hr:border-gray-200 prose-hr:my-8"
+            prose-hr:border-gray-200 prose-hr:my-8
+            [&_.link-preview-card]:no-underline
+            [&_.video-embed]:not-prose"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
       ) : null}

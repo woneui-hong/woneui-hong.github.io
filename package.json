@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev.mjs",
     "prebuild": "node scripts/build-posts-data.js",
     "build": "next build",
     "start": "next start",

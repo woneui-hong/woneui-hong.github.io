@@ -4,6 +4,7 @@ const matter = require('gray-matter')
 const { remark } = require('remark')
 const remarkGfm = require('remark-gfm')
 const remarkHtml = require('remark-html')
+const { preprocessEmbeds } = require('./remark-embeds')
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -122,7 +123,7 @@ function getPostFilePath(slug, lang = 'en') {
 /**
  * Process markdown content: fix images and convert to HTML
  */
-async function processMarkdown(content, slug) {
+async function processMarkdown(content, slug, linkPreviews = {}) {
   // Process images
   const imageBasePath = `/posts/${slug}/res/images`
   let processedContent = content.replace(
@@ -153,6 +154,8 @@ async function processMarkdown(content, slug) {
       return `<strong>${quote1}${text}${quote2}</strong>`
     }
   )
+
+  processedContent = preprocessEmbeds(processedContent, linkPreviews)
 
   // Convert markdown to HTML
   const processedHtml = await remark()
@@ -192,8 +195,9 @@ async function getPostBySlug(slug, lang = 'en') {
 
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContents)
+  const linkPreviews = data.linkPreviews || {}
 
-  const contentHtml = await processMarkdown(content, slug)
+  const contentHtml = await processMarkdown(content, slug, linkPreviews)
 
   return {
     slug,

@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 import remarkGfm from 'remark-gfm'
+import { preprocessEmbeds } from './remark-embeds'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -19,6 +20,7 @@ export interface PostMetadata {
   published?: boolean
   series?: string // Series name (e.g., "AMR 3Q2025")
   part?: number // Part number in the series
+  linkPreviews?: Record<string, { title?: string; description?: string; image?: string; url?: string }>
 }
 
 export interface Post {
@@ -160,6 +162,7 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
 
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
+  const linkPreviews = (data.linkPreviews as Record<string, { title?: string; description?: string; image?: string }>) || {}
 
   // Replace relative image paths (../res/images/ or ./images/ or images/) with absolute paths
   // The slug is the directory path (e.g., "2025/12/2025-12-16-work-prioritization-signal-noise")
@@ -204,6 +207,8 @@ export async function getPostBySlug(slug: string, lang: 'en' | 'ko' = 'en'): Pro
       return `<strong>${quote1}${text}${quote2}</strong>`
     }
   )
+
+  processedContent = preprocessEmbeds(processedContent, linkPreviews)
 
   const processedHtml = await remark()
     .use(remarkGfm)

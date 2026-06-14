@@ -12,5 +12,43 @@
   }
 }
 
+@layer components {
+  .link-preview-card {
+    @apply flex gap-4 my-6 p-4 border border-gray-200 rounded-xl bg-white shadow-sm no-underline transition-shadow hover:shadow-md overflow-hidden;
+  }
+
+  .link-preview-card__image {
+    @apply shrink-0 w-28 h-28 rounded-lg overflow-hidden bg-gray-100 hidden sm:block;
+  }
+
+  .link-preview-card__image img {
+    @apply w-full h-full object-cover;
+  }
+
+  .link-preview-card__body {
+    @apply min-w-0 flex-1;
+  }
+
+  .link-preview-card__title {
+    @apply font-semibold text-gray-900 line-clamp-2 mb-1;
+  }
+
+  .link-preview-card__description {
+    @apply text-sm text-gray-600 line-clamp-2 mb-2;
+  }
+
+  .link-preview-card__domain {
+    @apply text-xs text-gray-400 uppercase tracking-wide;
+  }
+
+  .video-embed {
+    @apply relative w-full my-6 overflow-hidden rounded-xl bg-black;
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-embed iframe {
+    @apply absolute inset-0 w-full h-full border-0;
+  }
+}
 
 
